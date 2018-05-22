@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Auto">
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="188dp"
+        android:layout_height="89dp"
+        android:text="Manual"
+        tools:layout_editor_absoluteX="193dp"
+        tools:layout_editor_absoluteY="539dp" />
+
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="188dp"
+        android:layout_height="89dp"
+        android:text="Auto"
+        tools:layout_editor_absoluteX="381dp"
+        tools:layout_editor_absoluteY="539dp" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="165dp"
+        android:layout_height="137dp"
+        android:text="Select Spool Size"
+        tools:layout_editor_absoluteX="58dp"
+        tools:layout_editor_absoluteY="65dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="281dp"
+        android:layout_height="95dp"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="312dp" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="188dp"
+        android:layout_height="89dp"
+        android:text="Go to menu"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="539dp" />
+</android.support.constraint.ConstraintLayout>
