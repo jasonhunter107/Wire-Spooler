@@ -9,6 +9,7 @@ namespace Wire_Spooler
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        //TabletClient tab = new TabletClient("127.0.0.1", 1200);
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

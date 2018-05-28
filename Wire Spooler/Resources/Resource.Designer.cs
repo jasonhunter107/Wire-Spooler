@@ -2618,20 +2618,20 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f0800a0
 			public const int button2 = 2131230880;
 			
-			// aapt resource value: 0x7f0800a6
-			public const int button3 = 2131230886;
-			
 			// aapt resource value: 0x7f0800a7
-			public const int button4 = 2131230887;
-			
-			// aapt resource value: 0x7f0800a1
-			public const int button5 = 2131230881;
+			public const int button3 = 2131230887;
 			
 			// aapt resource value: 0x7f0800a8
-			public const int button6 = 2131230888;
+			public const int button4 = 2131230888;
+			
+			// aapt resource value: 0x7f0800a6
+			public const int button5 = 2131230886;
 			
 			// aapt resource value: 0x7f0800a4
-			public const int button7 = 2131230884;
+			public const int button6 = 2131230884;
+			
+			// aapt resource value: 0x7f0800a3
+			public const int button7 = 2131230883;
 			
 			// aapt resource value: 0x7f08009f
 			public const int button8 = 2131230879;
@@ -2717,8 +2717,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080020
 			public const int disableHome = 2131230752;
 			
-			// aapt resource value: 0x7f0800a2
-			public const int editText = 2131230882;
+			// aapt resource value: 0x7f0800a1
+			public const int editText = 2131230881;
 			
 			// aapt resource value: 0x7f08008b
 			public const int edit_query = 2131230859;
@@ -2951,8 +2951,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080096
 			public const int search_voice_btn = 2131230870;
 			
-			// aapt resource value: 0x7f0800a3
-			public const int seekBar = 2131230883;
+			// aapt resource value: 0x7f0800a2
+			public const int seekBar = 2131230882;
 			
 			// aapt resource value: 0x7f080097
 			public const int select_dialog_listview = 2131230871;

@@ -17,7 +17,13 @@ namespace Wire_Spooler
 {
     class TabletClient
     {
-        TcpClient client = new TcpClient("192.1.1.9", 8080);
+        TcpClient client;
+
+        public TabletClient(string hostname, int port)
+        {
+            client = new TcpClient(hostname, port);
+        }
+
 
         public bool CutWire(int inchesToCut)
         {
@@ -39,7 +45,10 @@ namespace Wire_Spooler
             writer.Write((short)inchesToCut);
             writer.Flush();
 
-            //wait for response
+            //wait for response from PLC
+            /*
+             * 
+             * */
 
             var command = reader.ReadByte();
             var len = reader.ReadInt16();
