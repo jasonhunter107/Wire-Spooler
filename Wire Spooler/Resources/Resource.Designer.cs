@@ -2606,14 +2606,14 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08009e
 			public const int button = 2131230878;
 			
-			// aapt resource value: 0x7f08009d
-			public const int button10 = 2131230877;
+			// aapt resource value: 0x7f08009a
+			public const int button10 = 2131230874;
 			
 			// aapt resource value: 0x7f080099
 			public const int button11 = 2131230873;
 			
-			// aapt resource value: 0x7f08009a
-			public const int button12 = 2131230874;
+			// aapt resource value: 0x7f08009b
+			public const int button12 = 2131230875;
 			
 			// aapt resource value: 0x7f0800a0
 			public const int button2 = 2131230880;
@@ -2636,8 +2636,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08009f
 			public const int button8 = 2131230879;
 			
-			// aapt resource value: 0x7f08009b
-			public const int button9 = 2131230875;
+			// aapt resource value: 0x7f08009c
+			public const int button9 = 2131230876;
 			
 			// aapt resource value: 0x7f080070
 			public const int buttonPanel = 2131230832;
@@ -2873,8 +2873,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08004d
 			public const int pin = 2131230797;
 			
-			// aapt resource value: 0x7f08009c
-			public const int progressBar = 2131230876;
+			// aapt resource value: 0x7f08009d
+			public const int progressBar = 2131230877;
 			
 			// aapt resource value: 0x7f080006
 			public const int progress_circular = 2131230726;

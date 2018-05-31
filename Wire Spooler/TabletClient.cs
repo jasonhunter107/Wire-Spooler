@@ -34,13 +34,13 @@ namespace Wire_Spooler
            // NetworkStream writer = client.GetStream();
 
             //Bytes that are going to be sent to PLC
-            byte[] dataArray = new byte[1000];
+            //byte[] dataArray = new byte[1000];
 
             //Send 5 bytes (could change, using these values for now)
-            // [1 byte] command code
+            // [1 byte] command code = 0x01
             // [2 bytes] payload length
             // [2 bytes] payload (inches to cut)
-            writer.Write(dataArray[0]);
+            writer.Write(0x01);
             writer.Write((short) 2);
             writer.Write((short)inchesToCut);
             writer.Flush();
@@ -50,8 +50,9 @@ namespace Wire_Spooler
              * 
              * */
 
-            var command = reader.ReadByte();
-            var len = reader.ReadInt16();
+            //var command = reader.ReadByte();
+            //var len = reader.ReadInt16();
+            var command = 0x00;
 
             return (command == 0x00);
         }
