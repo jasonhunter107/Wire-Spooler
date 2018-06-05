@@ -32,6 +32,7 @@ namespace Wire_Spooler
             var btnManual = FindViewById<Button>(Resource.Id.button5);
             var btnAlarm = FindViewById<Button>(Resource.Id.button6);
             var btnControlRst = FindViewById<Button>(Resource.Id.button7);
+            var edtSpeed = FindViewById<EditText>(Resource.Id.editText); //Gets string from textbox
 
             btnAuto.Click += (s, e) =>
             {
@@ -39,7 +40,7 @@ namespace Wire_Spooler
                 StartActivity(nextActivity);
             };
 
-            btnManual.Click += (s, e) =>
+            btnManual.Click += (s, e) => 
             {
                 Intent nextActivity = new Intent(this, typeof(ManualActivity));
                 StartActivity(nextActivity);
@@ -53,7 +54,17 @@ namespace Wire_Spooler
 
             btnControlRst.Click += (s, e) =>
             {
-                tab.CutWire(10);
+                int inches;
+
+                if (edtSpeed.Text != null)
+                    inches = Int32.Parse(edtSpeed.Text);
+                else
+                    inches = 10;
+
+                if (inches < 0)
+                    tab.CutWire(10);
+                else
+                    tab.CutWire(inches);
             };
         }
     }

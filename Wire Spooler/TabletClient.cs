@@ -40,7 +40,7 @@ namespace Wire_Spooler
             // [1 byte] command code = 0x01
             // [2 bytes] payload length
             // [2 bytes] payload (inches to cut)
-            writer.Write(0x01);
+            writer.Write( (byte) 0x01);
             writer.Write((short) 2);
             writer.Write((short)inchesToCut);
             writer.Flush();

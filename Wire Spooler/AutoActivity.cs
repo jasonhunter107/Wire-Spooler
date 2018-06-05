@@ -15,6 +15,8 @@ namespace Wire_Spooler
     [Activity(Label = "AutoActivity")]
     public class AutoActivity : Activity
     {
+        private Button gSelectSpool;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -23,11 +25,23 @@ namespace Wire_Spooler
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_auto);
 
+            gSelectSpool = FindViewById<Button>(Resource.Id.button9);
+
+            gSelectSpool.Click += (object sender, EventArgs args) =>
+            {
+                //pull up dialog
+                FragmentTransaction transaction = FragmentManager.BeginTransaction();
+                SpoolSizeDialog spoolDialog = new SpoolSizeDialog();
+                spoolDialog.Show(transaction, "Dialog Fragment");
+            };
+
+
             var btnGoBack = FindViewById<Button>(Resource.Id.button10);
             btnGoBack.Click += delegate
             {
                 this.Finish();
             };
         }
+
     }
 }
