@@ -27,6 +27,7 @@ namespace Wire_Spooler
 
             gSelectSpool = FindViewById<Button>(Resource.Id.button9);
 
+            //Start dialog when user clicks on select spool size
             gSelectSpool.Click += (object sender, EventArgs args) =>
             {
                 //pull up dialog

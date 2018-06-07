@@ -34,24 +34,28 @@ namespace Wire_Spooler
             var btnControlRst = FindViewById<Button>(Resource.Id.button7);
             var edtSpeed = FindViewById<EditText>(Resource.Id.editText); //Gets string from textbox
 
+            //Start auto mode actitivty when user clicks auto mode
             btnAuto.Click += (s, e) =>
             {
                 Intent nextActivity = new Intent(this, typeof(AutoActivity));
                 StartActivity(nextActivity);
             };
 
+            //Start manual mode actitivty when user clicks manual mode
             btnManual.Click += (s, e) => 
             {
                 Intent nextActivity = new Intent(this, typeof(ManualActivity));
                 StartActivity(nextActivity);
             };
 
+            //Start Alarm activity when user clicks on alarm history
             btnAlarm.Click += (s, e) =>
             {
                 Intent nextActivity = new Intent(this, typeof(AlarmActivity));
                 StartActivity(nextActivity);
             };
 
+            //Test code* Send data to server after user clicks this button
             btnControlRst.Click += (s, e) =>
             {
                 int inches;

@@ -20,12 +20,19 @@ namespace Wire_Spooler
 
             var view = inflater.Inflate(Resource.Layout.dialog_select, container, false);
 
+            var submitBtn = view.FindViewById<Button>(Resource.Id.button13);
+
+            // Set up a handler to dismiss this DialogFragment when this button is clicked.
+            view.FindViewById<Button>(Resource.Id.button13).Click += (sender, args) => Dismiss();
+
             return view;
         }
 
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
             base.OnActivityCreated(savedInstanceState);
+
+            var submitBtn = View.FindViewById<Button>(Resource.Id.button13);
 
             //Different types of spools
             List<string> list = new List<string>();
