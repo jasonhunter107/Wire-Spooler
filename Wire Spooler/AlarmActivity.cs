@@ -19,6 +19,9 @@ namespace Wire_Spooler
         {
             base.OnCreate(savedInstanceState);
 
+            //Client class
+            //TabletClient tab = new TabletClient("10.0.2.2", 8081);
+
             // Create your application here
             SetContentView(Resource.Layout.activity_alarm);
         }

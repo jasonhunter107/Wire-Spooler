@@ -27,34 +27,43 @@ namespace Wire_Spooler
 
         public bool CutWire(int inchesToCut)
         {
-            //Instantiate and declare reader and writer
-            BinaryWriter writer = new BinaryWriter(new BufferedStream(client.GetStream()));
-            BinaryReader reader = new BinaryReader(new BufferedStream(client.GetStream())); 
+            //Instantiate and declare network stream
+            NetworkStream stream = client.GetStream();
 
-           // NetworkStream writer = client.GetStream();
+            //String that is going to be sent to PLC
+            string stringData = "01 Status Request";
+            
+            //Array that holds the network stream buffer
+            byte[] recievedData = new byte[1024];
 
             //Bytes that are going to be sent to PLC
-            //byte[] dataArray = new byte[1000];
+            byte[] bytes = Encoding.ASCII.GetBytes(stringData);
 
-            //Send 5 bytes (could change, using these values for now)
-            // [1 byte] command code = 0x01
-            // [2 bytes] payload length
-            // [2 bytes] payload (inches to cut)
-            writer.Write( (byte) 0x01);
-            writer.Write((short) 2);
-            writer.Write((short)inchesToCut);
-            writer.Flush();
+            //for (int i = 0; i < bytes.Length; i++)
+            //{
+            //    Console.WriteLine(bytes[i]);
+            //}
+
+            //Send the bytes to the PLC
+            stream.Write(bytes, 0, bytes.Length);
+
+            stream.Flush();
 
             //wait for response from PLC
             /*
              * 
              * */
+            //Use string builder if appending strings
 
-            //var command = reader.ReadByte();
-            //var len = reader.ReadInt16();
-            var command = 0x00;
+            var length = stream.Read(recievedData, 0, recievedData.Length);
 
-            return (command == 0x00);
+
+            //Convert the data that was received from the PLC to a string
+            var receivedString = Encoding.ASCII.GetString(recievedData, 0, length);
+
+            Console.WriteLine(receivedString);
+
+            return (receivedString == "01 Ready");
         }
 
 

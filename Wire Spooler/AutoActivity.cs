@@ -16,10 +16,14 @@ namespace Wire_Spooler
     public class AutoActivity : Activity
     {
         private Button gSelectSpool;
+        private int gSizeOfSpool;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            //Client class
+            //TabletClient tab = new TabletClient("10.0.2.2", 8081);
 
             // Create your application here
             // Set our view from the "main" layout resource
@@ -34,6 +38,10 @@ namespace Wire_Spooler
                 FragmentTransaction transaction = FragmentManager.BeginTransaction();
                 SpoolSizeDialog spoolDialog = new SpoolSizeDialog();
                 spoolDialog.Show(transaction, "Dialog Fragment");
+
+                //Button closeBtn = spoolDialog.Fi
+
+                gSizeOfSpool = spoolDialog.SpoolSize;
             };
 
 
@@ -42,6 +50,10 @@ namespace Wire_Spooler
             {
                 this.Finish();
             };
+
+
+            var spoolSize = FindViewById<EditText>(Resource.Id.editText5); //Spool size edit text
+            spoolSize.Text = gSizeOfSpool.ToString();
         }
 
     }

@@ -25,9 +25,10 @@ namespace Wire_Spooler
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            //127.0.0.1
-            TabletClient tab = new TabletClient("10.0.2.2", 8081);
+            //127.0.0.1 (comp); 10.0.2.2:8081 (Tablet Emu); 172.18.15.250:10002 (PLC);
+            TabletClient tab = new TabletClient("10.205.60.169", 8081);
 
+            //Button variables
             var btnAuto = FindViewById<Button>(Resource.Id.button4);
             var btnManual = FindViewById<Button>(Resource.Id.button5);
             var btnAlarm = FindViewById<Button>(Resource.Id.button6);
@@ -55,21 +56,21 @@ namespace Wire_Spooler
                 StartActivity(nextActivity);
             };
 
-            //Test code* Send data to server after user clicks this button
-            btnControlRst.Click += (s, e) =>
-            {
-                int inches;
+            ////Test code* Send data to server after user clicks this button
+            //btnControlRst.Click += (s, e) =>
+            //{
+            //    int inches;
 
-                if (edtSpeed.Text != null)
-                    inches = Int32.Parse(edtSpeed.Text);
-                else
-                    inches = 10;
+            //    if (edtSpeed.Text != null)
+            //        inches = Int32.Parse(edtSpeed.Text);
+            //    else
+            //        inches = 10;
 
-                if (inches < 0)
-                    tab.CutWire(10);
-                else
-                    tab.CutWire(inches);
-            };
+            //    if (inches < 0)
+            //        tab.CutWire(10);
+            //    else
+            //        tab.CutWire(inches);
+            //};
         }
     }
 }

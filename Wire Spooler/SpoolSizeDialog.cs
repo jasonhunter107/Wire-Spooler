@@ -14,6 +14,10 @@ namespace Wire_Spooler
 {
    class SpoolSizeDialog : DialogFragment 
     {
+        /* Declaring the size of the frame */
+        private int spoolSize = 0;
+
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
@@ -22,8 +26,17 @@ namespace Wire_Spooler
 
             var submitBtn = view.FindViewById<Button>(Resource.Id.button13);
 
+
+            var spoolSizeBox = view.FindViewById<EditText>(Resource.Id.editText2); //Gets string from textbox
+
+            spoolSize = Int32.Parse(spoolSizeBox.Text);
+
             // Set up a handler to dismiss this DialogFragment when this button is clicked.
-            view.FindViewById<Button>(Resource.Id.button13).Click += (sender, args) => Dismiss();
+            var closeBtn = view.FindViewById<Button>(Resource.Id.button13); //.Click += (sender, args) => Dismiss();
+            closeBtn.Click += delegate
+            {
+                Dispose();
+            };
 
             return view;
         }
@@ -46,6 +59,22 @@ namespace Wire_Spooler
 
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 
+
+
         }
+
+        //getter and setter for spool size
+        public int SpoolSize
+        {
+            get
+            {
+                return spoolSize;
+            }
+            set
+            {
+                spoolSize = value;
+            }
+        }
+
     }
 }
