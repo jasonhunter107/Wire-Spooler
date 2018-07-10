@@ -25,15 +25,17 @@ namespace Wire_Spooler
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            //127.0.0.1 (comp); 10.0.2.2:8081 (Tablet Emu); 172.18.15.250:10002 (PLC);
-            TabletClient tab = new TabletClient("10.205.60.169", 8081);
+            //127.0.0.1 (comp); 10.0.2.2:8081 (Tablet Emu); 172.18.15.250:10002 (PLC); "10.205.60.169"
+            TabletClient tab = new TabletClient("10.0.2.2", 8081);
 
             //Button variables
-            var btnAuto = FindViewById<Button>(Resource.Id.button4);
-            var btnManual = FindViewById<Button>(Resource.Id.button5);
-            var btnAlarm = FindViewById<Button>(Resource.Id.button6);
-            var btnControlRst = FindViewById<Button>(Resource.Id.button7);
-            var edtSpeed = FindViewById<EditText>(Resource.Id.editText); //Gets string from textbox
+            var btnAuto = FindViewById<Button>(Resource.Id.autoMode);
+            var btnManual = FindViewById<Button>(Resource.Id.manualMode);
+            var btnAlarm = FindViewById<Button>(Resource.Id.alarmScreen);
+            var btnControlRst = FindViewById<Button>(Resource.Id.ctrlReset);
+            //var edtSpeed = FindViewById<EditText>(Resource.Id.editText); //Gets string from textbox
+
+            AppState.Instance.SpoolSize = 100;
 
             //Start auto mode actitivty when user clicks auto mode
             btnAuto.Click += (s, e) =>

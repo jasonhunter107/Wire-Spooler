@@ -29,10 +29,10 @@ namespace Wire_Spooler
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_auto);
 
-            gSelectSpool = FindViewById<Button>(Resource.Id.button9);
+            gSelectSpool = FindViewById<Button>(Resource.Id.spoolSizeBtn);
 
             //Start dialog when user clicks on select spool size
-            gSelectSpool.Click += (object sender, EventArgs args) =>
+            gSelectSpool.Click += (s, e) =>
             {
                 //pull up dialog
                 FragmentTransaction transaction = FragmentManager.BeginTransaction();
@@ -45,15 +45,15 @@ namespace Wire_Spooler
             };
 
 
-            var btnGoBack = FindViewById<Button>(Resource.Id.button10);
+            var btnGoBack = FindViewById<Button>(Resource.Id.menuBtn);
             btnGoBack.Click += delegate
             {
                 this.Finish();
             };
 
 
-            var spoolSize = FindViewById<EditText>(Resource.Id.editText5); //Spool size edit text
-            spoolSize.Text = gSizeOfSpool.ToString();
+            //var spoolSize = FindViewById<EditText>(Resource.Id.editText); //Spool size edit text
+            //spoolSize.Text = gSizeOfSpool.ToString();
         }
 
     }

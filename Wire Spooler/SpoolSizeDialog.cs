@@ -29,13 +29,15 @@ namespace Wire_Spooler
 
             var spoolSizeBox = view.FindViewById<EditText>(Resource.Id.editText2); //Gets string from textbox
 
-            spoolSize = Int32.Parse(spoolSizeBox.Text);
+            spoolSizeBox.Text = AppState.Instance.SpoolSize.ToString();
+
+           // spoolSize = Int32.Parse(spoolSizeBox.Text);
 
             // Set up a handler to dismiss this DialogFragment when this button is clicked.
             var closeBtn = view.FindViewById<Button>(Resource.Id.button13); //.Click += (sender, args) => Dismiss();
             closeBtn.Click += delegate
             {
-                Dispose();
+                this.Dismiss();
             };
 
             return view;

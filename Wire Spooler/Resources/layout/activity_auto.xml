@@ -6,118 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".Auto">
 
-    <Button
-        android:id="@+id/button11"
-        android:layout_width="188dp"
-        android:layout_height="89dp"
-        android:layout_marginBottom="5dp"
-        android:text="Manual"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button10" />
-
-    <Button
-        android:id="@+id/button12"
-        android:layout_width="188dp"
-        android:layout_height="89dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="5dp"
-        android:text="Auto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button11" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="165dp"
-        android:layout_height="137dp"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="65dp"
-        android:text="Select Spool Size"
+    <LinearLayout
+        android:layout_width="514dp"
+        android:layout_height="131dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="281dp"
-        android:layout_height="95dp"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="110dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button9" />
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Auto Mode"
+            android:textSize="70sp" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="188dp"
-        android:layout_height="89dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="5dp"
-        android:text="Go to menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button11"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button14"
-        android:layout_width="142dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="282dp"
-        android:layout_marginTop="355dp"
-        android:text="Run"
-        app:layout_constraintStart_toEndOf="@+id/progressBar"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="94dp"
-        android:text="Inches to Cut:"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/button9"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="76dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="42dp"
-        android:text="Spool Size:"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/button9"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="77dp"
-        android:layout_marginTop="31dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="244dp"
-        android:layout_height="251dp"
-        android:layout_marginEnd="193dp"
-        android:layout_marginTop="76dp"
-        android:src="@android:drawable/sym_def_app_icon"
+    <LinearLayout
+        android:layout_width="709dp"
+        android:layout_height="185dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <Button
+            android:id="@+id/spoolSizeBtn"
+            android:layout_width="136dp"
+            android:layout_height="91dp"
+            android:text="Select Spool Size" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Spool Size:"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberSigned" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="1350dp"
+        android:layout_height="486dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter number of conductors" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button14"
+                android:layout_width="415dp"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:textAlignment="viewStart" />
+
+            <Button
+                android:id="@+id/menuBtn"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Go to Main Menu" />
+        </LinearLayout>
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
