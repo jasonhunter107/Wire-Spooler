@@ -14,9 +14,6 @@ namespace Wire_Spooler
 {
    class SpoolSizeDialog : DialogFragment 
     {
-        /* Declaring the size of the frame */
-        private int spoolSize = 0;
-
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -25,7 +22,6 @@ namespace Wire_Spooler
             var view = inflater.Inflate(Resource.Layout.dialog_select, container, false);
 
             var submitBtn = view.FindViewById<Button>(Resource.Id.button13);
-
 
             var spoolSizeBox = view.FindViewById<EditText>(Resource.Id.editText2); //Gets string from textbox
 
@@ -63,19 +59,6 @@ namespace Wire_Spooler
 
 
 
-        }
-
-        //getter and setter for spool size
-        public int SpoolSize
-        {
-            get
-            {
-                return spoolSize;
-            }
-            set
-            {
-                spoolSize = value;
-            }
         }
 
     }

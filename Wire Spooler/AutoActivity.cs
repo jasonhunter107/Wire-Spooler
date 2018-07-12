@@ -15,24 +15,29 @@ namespace Wire_Spooler
     [Activity(Label = "AutoActivity")]
     public class AutoActivity : Activity
     {
-        private Button gSelectSpool;
-        private int gSizeOfSpool;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            //Client class
-            //TabletClient tab = new TabletClient("10.0.2.2", 8081);
+            var conductorNum = 10;
+            var selectSpool = FindViewById<Button>(Resource.Id.spoolSizeBtn);
+            var sizeOfSpool = 0;
 
-            // Create your application here
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.activity_auto);
+        //Client class
+        //TabletClient tab = new TabletClient("10.0.2.2", 8081);
 
-            gSelectSpool = FindViewById<Button>(Resource.Id.spoolSizeBtn);
+        //Stuff to add:
+        // Save/Load setting for auto mode
+        //Jog Left/Right buttons on manual mode
+        //Live feed of the length spooled in auto screen (just like manual mode)
+
+        // Create your application here
+        // Set our view from the "auto" layout resource
+        SetContentView(Resource.Layout.activity_auto);
 
             //Start dialog when user clicks on select spool size
-            gSelectSpool.Click += (s, e) =>
+            selectSpool.Click += (s, e) =>
             {
                 //pull up dialog
                 FragmentTransaction transaction = FragmentManager.BeginTransaction();
@@ -41,7 +46,32 @@ namespace Wire_Spooler
 
                 //Button closeBtn = spoolDialog.Fi
 
-                gSizeOfSpool = spoolDialog.SpoolSize;
+                sizeOfSpool = AppState.Instance.SpoolSize;
+            };
+
+            /**********************************************************************
+            * Generates the table of the conductors
+            *********************************************************************/
+
+            //var lstData = FindViewById<ListView>(Resource.Id.XXX);
+            var createTable = FindViewById<Button>(Resource.Id.genBtn);
+            createTable.Click += delegate
+            {
+                List<Conductor> lstConductor = new List<Conductor>();
+                for (int i = 0; i < conductorNum; i++)
+                {
+                    Conductor conductor = new Conductor()
+                    {
+                        ID = i,
+                        Gauge = 0,
+                        Length = 0
+                    };
+
+                    lstConductor.Add(conductor);
+                }
+
+                var adapter = new ListAdapter(this, lstConductor);
+                //lstData.Adapter = adapter;
             };
 
 
