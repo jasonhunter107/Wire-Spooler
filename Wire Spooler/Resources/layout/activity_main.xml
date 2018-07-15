@@ -6,61 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".Menu">
 
-    <Button
-        android:id="@+id/autoMode"
-        android:layout_width="184dp"
-        android:layout_height="88dp"
-        android:layout_marginBottom="356dp"
-        android:layout_marginEnd="390dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="255dp"
-        android:text="Auto Mode"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
-        app:layout_constraintStart_toEndOf="@+id/manualMode"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:layout_editor_absoluteX="0dp">
 
-    <Button
-        android:id="@+id/manualMode"
-        android:layout_width="184dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="260dp"
-        android:text="Manual Mode"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="443dp" />
+        <Button
+            android:id="@+id/autoMode"
+            android:layout_width="258dp"
+            android:layout_height="133dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="378dp"
+            android:text="Auto Mode"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.186"
+            app:layout_constraintStart_toEndOf="@+id/manualMode"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/alarmScreen"
-        android:layout_width="263dp"
-        android:layout_height="63dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginTop="340dp"
-        android:text="Alarm Screen"
-        app:layout_constraintBottom_toTopOf="@+id/ctrlReset"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <Button
+            android:id="@+id/manualMode"
+            android:layout_width="258dp"
+            android:layout_height="133dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="432dp"
+            android:text="Manual Mode"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="443dp" />
 
-    <Button
-        android:id="@+id/ctrlReset"
-        android:layout_width="263dp"
-        android:layout_height="63dp"
-        android:layout_marginBottom="7dp"
-        android:layout_marginStart="1004dp"
-        android:text="Control Power reset"
-        app:layout_constraintBottom_toTopOf="@+id/mstrFaultReset"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/alarmScreen"
+            android:layout_width="263dp"
+            android:layout_height="63dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="80dp"
+            android:text="Alarm Screen"
+            app:layout_constraintBottom_toTopOf="@+id/ctrlReset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <Button
-        android:id="@+id/mstrFaultReset"
-        android:layout_width="263dp"
-        android:layout_height="63dp"
-        android:layout_marginBottom="112dp"
-        android:text="Master Fault Reset"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="1007dp" />
+        <Button
+            android:id="@+id/ctrlReset"
+            android:layout_width="263dp"
+            android:layout_height="63dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="121dp"
+            android:text="Control Power reset"
+            app:layout_constraintBottom_toTopOf="@+id/mstrFaultReset"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/mstrFaultReset"
+            android:layout_width="263dp"
+            android:layout_height="63dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="523dp"
+            android:text="Master Fault Reset"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="1007dp" />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

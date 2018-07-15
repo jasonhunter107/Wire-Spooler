@@ -12,11 +12,29 @@
         android:text="Select Spool Size"
         android:textSize="24sp" />
 
-    <Spinner
-        android:id="@+id/spinner"
+    <Button
+        android:id="@+id/firstSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:text="5" />
+
+    <Button
+        android:id="@+id/secondSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="10" />
+
+    <Button
+        android:id="@+id/thirdSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="15" />
+
+    <Button
+        android:id="@+id/fourthSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="20" />
 
     <TextView
         android:id="@+id/textView4"

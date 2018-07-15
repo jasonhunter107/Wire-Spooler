@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,30 +10,32 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/conductorPosition"
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/quantityText"
+            android:layout_width="66dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="0" />
+            android:ems="10"
+            android:hint="Quantity"
+            android:inputType="numberSigned" />
 
         <EditText
             android:id="@+id/gaugeText"
-            android:layout_width="wrap_content"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="numberSigned"
-            android:text="Gauge" />
+            android:hint="Gauge"
+            android:inputType="numberSigned" />
 
         <EditText
             android:id="@+id/lengthText"
-            android:layout_width="wrap_content"
+            android:layout_width="139dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="numberSigned"
-            android:text="Length" />
+            android:hint="Length"
+            android:inputType="numberSigned" />
     </LinearLayout>
 
 </LinearLayout>

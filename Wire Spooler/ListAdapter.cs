@@ -15,17 +15,18 @@ namespace Wire_Spooler
 { 
     public class ViewHolder : Java.Lang.Object
     {
-        public TextView txtPosition { get; set; }
+        public TextView txtQuantity { get; set; }
 
         public EditText txtGauge { get; set; }
 
         public EditText txtLength { get; set; }
     }
 
+
     public class ListAdapter : BaseAdapter
     {
         private Activity activity;
-        private List<Conductor> conductors;
+        private  List<Conductor> conductors;
 
         public ListAdapter(Activity activity, List<Conductor> conductors)
         {
@@ -49,15 +50,15 @@ namespace Wire_Spooler
 
         public override long GetItemId(int position)
         {
-            return conductors[position].ID;
+            return conductors[position].Quantity;
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             var view = convertView ?? activity.LayoutInflater.Inflate(Resource.Layout.list_view, parent, false);
 
-            var txtPosition = view.FindViewById<TextView>(Resource.Id.conductorPosition);
-            var txtGauge = view.FindViewById<EditText>(Resource.Id.g);
+            var txtQuantity = view.FindViewById<TextView>(Resource.Id.quantityText);
+            var txtGauge = view.FindViewById<EditText>(Resource.Id.gaugeText);
             var txtLength = view.FindViewById<EditText>(Resource.Id.lengthText);
 
             return view;

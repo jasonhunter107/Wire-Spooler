@@ -12,10 +12,10 @@ using Android.Widget;
 
 namespace Wire_Spooler
 {
-    class Conductor
+    public class Conductor
     {
 
-        public int ID { get; set; }
+        public int Quantity { get; set; }
 
         public int Length { get; set; }
 

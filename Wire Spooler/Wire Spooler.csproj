@@ -144,9 +144,9 @@
     <AndroidResource Include="Resources\layout\dialog_select.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\layout\list_view.xml">
+    <AndroidResource Include="Resources\layout\list_view.xml">
       <SubType>Designer</SubType>
-    </Content>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

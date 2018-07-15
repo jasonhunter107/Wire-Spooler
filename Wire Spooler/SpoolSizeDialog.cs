@@ -27,12 +27,41 @@ namespace Wire_Spooler
 
             spoolSizeBox.Text = AppState.Instance.SpoolSize.ToString();
 
-           // spoolSize = Int32.Parse(spoolSizeBox.Text);
+            var firstOption = view.FindViewById<Button>(Resource.Id.firstSize);
+            firstOption.Click += delegate
+            {
+                AppState.Instance.SpoolSize = 5;
+                this.Dismiss();
+            };
+
+            var secondOption = view.FindViewById<Button>(Resource.Id.secondSize);
+            secondOption.Click += delegate
+            {
+                AppState.Instance.SpoolSize = 10;
+                this.Dismiss();
+            };
+
+
+            var thirdOption = view.FindViewById<Button>(Resource.Id.thirdSize);
+            thirdOption.Click += delegate
+            {
+                AppState.Instance.SpoolSize = 15;
+                this.Dismiss();
+            };
+
+
+            var fourthOption = view.FindViewById<Button>(Resource.Id.fourthSize);
+            fourthOption.Click += delegate
+            {
+                AppState.Instance.SpoolSize = 20;
+                this.Dismiss();
+            };
 
             // Set up a handler to dismiss this DialogFragment when this button is clicked.
             var closeBtn = view.FindViewById<Button>(Resource.Id.button13); //.Click += (sender, args) => Dismiss();
             closeBtn.Click += delegate
             {
+                AppState.Instance.SpoolSize = 30;
                 this.Dismiss();
             };
 
@@ -45,17 +74,10 @@ namespace Wire_Spooler
 
             var submitBtn = View.FindViewById<Button>(Resource.Id.button13);
 
-            //Different types of spools
-            List<string> list = new List<string>();
-            list.Add("1");
-            list.Add("2");
-            list.Add("3");
-            list.Add("4");
-            list.Add("5");
-
-            var adapter = new ArrayAdapter<string>(this.Activity, Android.Resource.Layout.SimpleSpinnerItem, list.ToArray());
-
-            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            //var firstOption = View.FindViewById<Button>(Resource.Id.firstSize);
+            //var secondOption = View.FindViewById<Button>(Resource.Id.secondSize);
+            //var thirdOption = View.FindViewById<Button>(Resource.Id.thirdSize);
+            //var fourthOption = View.FindViewById<Button>(Resource.Id.fourthSize);
 
 
 

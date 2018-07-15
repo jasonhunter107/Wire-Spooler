@@ -39,7 +39,7 @@
             android:text="Select Spool Size" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/spoolSizeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Spool Size:"
@@ -55,10 +55,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="1350dp"
-        android:layout_height="486dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="1364dp"
+        android:layout_height="316dp"
+        android:layout_marginBottom="168dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -68,61 +68,85 @@
             android:layout_height="60dp"
             android:orientation="horizontal">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp">
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="528dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Enter number of conductors" />
+            <EditText
+                android:id="@+id/ConductorAmtText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Enter Number of Runs"
+                android:inputType="numberSigned" />
 
-                <Button
-                    android:id="@+id/genBtn"
-                    android:layout_width="160dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Generate Table" />
+            <Button
+                android:id="@+id/genBtn"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Generate Table" />
 
-                <Button
-                    android:id="@+id/copyBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Copy" />
-            </android.support.design.widget.TextInputLayout>
+            <Button
+                android:id="@+id/copyBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Copy" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="250dp"
             android:orientation="vertical">
 
-            <ScrollView
+            <ListView
+                android:id="@+id/conductorList"
                 android:layout_width="match_parent"
-                android:layout_height="256dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" />
-            </ScrollView>
-
-            <Button
-                android:id="@+id/runBtn"
-                android:layout_width="415dp"
-                android:layout_height="wrap_content"
-                android:text="Run"
-                android:textAlignment="viewStart" />
-
-            <Button
-                android:id="@+id/menuBtn"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:text="Go to Main Menu" />
+                android:layout_height="256dp" />
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/runBtn"
+        android:layout_width="166dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="88dp"
+        android:text="Run"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/menuBtn"
+        android:layout_width="226dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:text="Go to Main Menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/lengthText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="10dp"
+        android:text="Length: "
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/lengthFeed" />
+
+    <TextView
+        android:id="@+id/lengthFeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="245dp"
+        android:text="0"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

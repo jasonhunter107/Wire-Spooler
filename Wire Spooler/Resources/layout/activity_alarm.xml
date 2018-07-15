@@ -6,24 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".Alarm">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="455dp"
-        android:layout_height="82dp"
-        android:text="Alarm History List"
-        android:textSize="36sp"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="34dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="1350dp"
-        android:layout_height="499dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="124dp">
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:text="Alarm Screen"
+            android:textSize="36sp" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

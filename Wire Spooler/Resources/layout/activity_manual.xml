@@ -7,6 +7,7 @@
     tools:context=".Manual">
 
   <LinearLayout
+      android:id="@+id/linearLayout2"
       android:layout_width="1338dp"
       android:layout_height="145dp"
       android:orientation="vertical"
@@ -23,6 +24,7 @@
   </LinearLayout>
 
   <LinearLayout
+      android:id="@+id/linearLayout3"
       android:layout_width="1134dp"
       android:layout_height="113dp"
       android:orientation="horizontal"
@@ -33,7 +35,7 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="482dp"
+        android:layout_width="84dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Set Speed:"
@@ -45,12 +47,11 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+        android:layout_width="8dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Length: "
@@ -62,23 +63,58 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="textPersonName" />
+
   </LinearLayout>
 
-  <LinearLayout
-      android:layout_width="1366dp"
-      android:layout_height="116dp"
-      android:orientation="vertical"
+  <Button
+      android:id="@+id/button"
+      android:layout_width="156dp"
+      android:layout_height="73dp"
+      android:layout_marginEnd="216dp"
+      android:layout_marginTop="196dp"
+      android:text="Jog Forward"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+  <Button
+      android:id="@+id/button2"
+      android:layout_width="156dp"
+      android:layout_height="73dp"
+      android:layout_marginBottom="88dp"
+      android:layout_marginStart="836dp"
+      android:text="Jog Left"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      tools:layout_editor_absoluteX="0dp">
+      app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btnManRun"
-        android:layout_width="match_parent"
-        android:layout_height="102dp"
-        android:text="Run" />
-  </LinearLayout>
+  <Button
+      android:id="@+id/button3"
+      android:layout_width="156dp"
+      android:layout_height="70dp"
+      android:layout_marginBottom="2dp"
+      android:layout_marginEnd="68dp"
+      android:text="Jog Right"
+      app:layout_constraintBottom_toTopOf="@+id/button4"
+      app:layout_constraintEnd_toEndOf="parent" />
+
+  <Button
+      android:id="@+id/button4"
+      android:layout_width="156dp"
+      android:layout_height="73dp"
+      android:layout_marginBottom="16dp"
+      android:layout_marginEnd="216dp"
+      android:text="Jog Reverse"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent" />
+
+  <Button
+      android:id="@+id/button6"
+      android:layout_width="206dp"
+      android:layout_height="86dp"
+      android:layout_marginBottom="284dp"
+      android:text="Run"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -20,23 +20,27 @@ namespace Wire_Spooler
         {
             base.OnCreate(savedInstanceState);
 
-            var conductorNum = 10;
-            var selectSpool = FindViewById<Button>(Resource.Id.spoolSizeBtn);
+            // Create your application here
+            // Set our view from the "auto" layout resource
+            SetContentView(Resource.Layout.activity_auto);
+
             var sizeOfSpool = 0;
 
-        //Client class
-        //TabletClient tab = new TabletClient("10.0.2.2", 8081);
+            //Spool size text
+            var spoolTxt = FindViewById<EditText>(Resource.Id.editText3);
+            spoolTxt.Text = AppState.Instance.SpoolSize.ToString();
 
-        //Stuff to add:
-        // Save/Load setting for auto mode
-        //Jog Left/Right buttons on manual mode
-        //Live feed of the length spooled in auto screen (just like manual mode)
 
-        // Create your application here
-        // Set our view from the "auto" layout resource
-        SetContentView(Resource.Layout.activity_auto);
+            //Client class
+            //TabletClient tab = new TabletClient("10.0.2.2", 8081);
+
+            //Stuff to add:
+            // Save/Load setting for auto mode
+            //Jog Left/Right buttons on manual mode
+            //Live feed of the length spooled in auto screen (just like manual mode)
 
             //Start dialog when user clicks on select spool size
+            var selectSpool = FindViewById<Button>(Resource.Id.spoolSizeBtn);
             selectSpool.Click += (s, e) =>
             {
                 //pull up dialog
@@ -53,16 +57,18 @@ namespace Wire_Spooler
             * Generates the table of the conductors
             *********************************************************************/
 
-            //var lstData = FindViewById<ListView>(Resource.Id.XXX);
+            var lstData = FindViewById<ListView>(Resource.Id.conductorList);
             var createTable = FindViewById<Button>(Resource.Id.genBtn);
+            var condText = FindViewById<EditText>(Resource.Id.ConductorAmtText);
             createTable.Click += delegate
             {
+                var conductorNum = Int32.Parse(condText.Text);
                 List<Conductor> lstConductor = new List<Conductor>();
                 for (int i = 0; i < conductorNum; i++)
                 {
                     Conductor conductor = new Conductor()
                     {
-                        ID = i,
+                        Quantity = 0,
                         Gauge = 0,
                         Length = 0
                     };
@@ -71,10 +77,12 @@ namespace Wire_Spooler
                 }
 
                 var adapter = new ListAdapter(this, lstConductor);
-                //lstData.Adapter = adapter;
+                lstData.Adapter = adapter;
             };
 
-
+            /**********************************************************************
+            * Go back to menu button
+            *********************************************************************/
             var btnGoBack = FindViewById<Button>(Resource.Id.menuBtn);
             btnGoBack.Click += delegate
             {
