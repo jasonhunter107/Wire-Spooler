@@ -23,10 +23,6 @@ namespace Wire_Spooler
 
         public int SpoolSize { get; set; }
 
-       // public List<Conductor> Conductors = new List<Conductor>();
-
-        //Add a conductor class
-        //Add a List of conductors here
-        //Create Adapter class and inherit from the base ArrayAdapter class (refer to bookmarked page)
+        public List<Conductor> Conductors = new List<Conductor>();
     }
 }

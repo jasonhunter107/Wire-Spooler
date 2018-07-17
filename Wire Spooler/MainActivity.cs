@@ -37,7 +37,7 @@ namespace Wire_Spooler
             var btnControlRst = FindViewById<Button>(Resource.Id.ctrlReset);
             //var edtSpeed = FindViewById<EditText>(Resource.Id.editText); //Gets string from textbox
 
-            AppState.Instance.SpoolSize = 100;
+            AppState.Instance.SpoolSize = 0;
 
             //Start auto mode actitivty when user clicks auto mode
             btnAuto.Click += (s, e) =>

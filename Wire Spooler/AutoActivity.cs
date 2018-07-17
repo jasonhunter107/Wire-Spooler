@@ -25,7 +25,7 @@ namespace Wire_Spooler
             SetContentView(Resource.Layout.activity_auto);
 
             var sizeOfSpool = 0;
-
+               
             //Spool size text
             var spoolTxt = FindViewById<EditText>(Resource.Id.editText3);
             spoolTxt.Text = AppState.Instance.SpoolSize.ToString();
@@ -48,9 +48,9 @@ namespace Wire_Spooler
                 SpoolSizeDialog spoolDialog = new SpoolSizeDialog();
                 spoolDialog.Show(transaction, "Dialog Fragment");
 
-                //Button closeBtn = spoolDialog.Fi
 
                 sizeOfSpool = AppState.Instance.SpoolSize;
+                spoolTxt.Text = AppState.Instance.SpoolSize.ToString();
             };
 
             /**********************************************************************
@@ -60,10 +60,13 @@ namespace Wire_Spooler
             var lstData = FindViewById<ListView>(Resource.Id.conductorList);
             var createTable = FindViewById<Button>(Resource.Id.genBtn);
             var condText = FindViewById<EditText>(Resource.Id.ConductorAmtText);
+
+            var lstConductor = AppState.Instance.Conductors;
+
             createTable.Click += delegate
             {
+                //error check here
                 var conductorNum = Int32.Parse(condText.Text);
-                List<Conductor> lstConductor = new List<Conductor>();
                 for (int i = 0; i < conductorNum; i++)
                 {
                     Conductor conductor = new Conductor()
@@ -81,6 +84,38 @@ namespace Wire_Spooler
             };
 
             /**********************************************************************
+            * Run button
+            *********************************************************************/
+            var runButton = FindViewById<Button>(Resource.Id.runBtn);
+            runButton.Click += delegate
+            {
+                //var txtQuantity = lstData.FindViewById<EditText>(Resource.Id.quantityText);
+                //var txtGauge = lstData.FindViewById<EditText>(Resource.Id.gaugeText);
+                //var txtLength = lstData.FindViewById<EditText>(Resource.Id.lengthText);
+
+               // var t = s.GetView(1, null, null);
+               // var a = t.FindViewById<EditText>(Resource.Id.quantityText);
+
+                //foreach (var i in lstConductor)
+                //{
+                //    i.Quantity = Int32.Parse(txtQuantity.Text);
+                //    i.Gauge = Int32.Parse(txtGauge.Text);
+                //    i.Length = Int32.Parse(txtLength.Text);
+
+                //    AppState.Instance.conductors.Add(i);
+                //}
+
+                spoolTxt.Text = String.Format(" {0} {1} {2} {3} {4} {5}",
+                    AppState.Instance.Conductors[0].Quantity.ToString(),
+                    AppState.Instance.Conductors[0].Gauge.ToString(),
+                    AppState.Instance.Conductors[0].Length.ToString(),
+                    AppState.Instance.Conductors[1].Quantity.ToString(),
+                    AppState.Instance.Conductors[1].Gauge.ToString(),
+                    AppState.Instance.Conductors[1].Length.ToString()
+                    );
+            };
+
+            /**********************************************************************
             * Go back to menu button
             *********************************************************************/
             var btnGoBack = FindViewById<Button>(Resource.Id.menuBtn);
@@ -88,10 +123,6 @@ namespace Wire_Spooler
             {
                 this.Finish();
             };
-
-
-            //var spoolSize = FindViewById<EditText>(Resource.Id.editText); //Spool size edit text
-            //spoolSize.Text = gSizeOfSpool.ToString();
         }
 
     }

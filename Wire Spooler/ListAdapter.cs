@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Text;
 using Android.Views;
 using Android.Widget;
 using Java.Lang;
@@ -15,11 +16,11 @@ namespace Wire_Spooler
 { 
     public class ViewHolder : Java.Lang.Object
     {
-        public TextView txtQuantity { get; set; }
+        public int Quantity { get; set; }
 
-        public EditText txtGauge { get; set; }
+        public int Gauge { get; set; }
 
-        public EditText txtLength { get; set; }
+        public int Length { get; set; }
     }
 
 
@@ -43,6 +44,7 @@ namespace Wire_Spooler
             }
         }
 
+
         public override Java.Lang.Object GetItem(int position)
         {
             throw new NotImplementedException();
@@ -53,13 +55,46 @@ namespace Wire_Spooler
             return conductors[position].Quantity;
         }
 
+        public long GetGauge(int position)
+        {
+            return conductors[position].Gauge;
+        }
+
+        public long GetLength(int position)
+        {
+            return conductors[position].Length;
+        }
+
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             var view = convertView ?? activity.LayoutInflater.Inflate(Resource.Layout.list_view, parent, false);
 
-            var txtQuantity = view.FindViewById<TextView>(Resource.Id.quantityText);
+            var txtQuantity = view.FindViewById<EditText>(Resource.Id.quantityText);
+
+            txtQuantity.TextChanged += (s, e) =>
+            {
+                conductors[position].Quantity = string.IsNullOrWhiteSpace(txtQuantity.Text) 
+                    ? 0 
+                    : Convert.ToInt32(txtQuantity.Text);
+            };
+
             var txtGauge = view.FindViewById<EditText>(Resource.Id.gaugeText);
+
+            txtGauge.TextChanged += (s, e) =>
+            {
+                conductors[position].Gauge = string.IsNullOrWhiteSpace(txtGauge.Text)
+                ? 0
+                    : Convert.ToInt32(txtGauge.Text);
+            };
+
             var txtLength = view.FindViewById<EditText>(Resource.Id.lengthText);
+
+            txtLength.TextChanged += (s, e) =>
+            {
+                conductors[position].Length = string.IsNullOrWhiteSpace(txtLength.Text)
+                    ? 0
+                    : Convert.ToInt32(txtLength.Text);
+            };
 
             return view;
         }

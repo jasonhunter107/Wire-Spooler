@@ -25,13 +25,13 @@ namespace Wire_Spooler
         }
 
 
-        public bool CutWire(int inchesToCut)
+        public bool SpoolWire(int spoolSize, int gauge, int lengthWire)
         {
             //Instantiate and declare network stream
             NetworkStream stream = client.GetStream();
 
             //String that is going to be sent to PLC
-            string stringData = "01 Status Request";
+            string stringData = string.Format("01 {0} {1} {2}",spoolSize, gauge, lengthWire);
             
             //Array that holds the network stream buffer
             byte[] recievedData = new byte[1024];
@@ -64,6 +64,41 @@ namespace Wire_Spooler
             Console.WriteLine(receivedString);
 
             return (receivedString == "01 Ready");
+        }
+
+        public bool RunMotor(int speed)
+        {
+            //Instantiate and declare network stream
+            NetworkStream stream = client.GetStream();
+
+            //String that is going to be sent to PLC
+            string stringData = string.Format("02 {0}", speed);
+
+            //Array that holds the network stream buffer
+            byte[] recievedData = new byte[1024];
+
+            //Bytes that are going to be sent to PLC
+            byte[] bytes = Encoding.ASCII.GetBytes(stringData);
+
+            //Send the bytes to the PLC
+            stream.Write(bytes, 0, bytes.Length);
+
+            stream.Flush();
+
+            //wait for response from PLC
+            /*
+             * 
+             * */
+
+            var length = stream.Read(recievedData, 0, recievedData.Length);
+
+
+            //Convert the data that was received from the PLC to a string
+            var receivedString = Encoding.ASCII.GetString(recievedData, 0, length);
+
+            Console.WriteLine(receivedString);
+
+            return (receivedString == "02 Ready");
         }
 
 
