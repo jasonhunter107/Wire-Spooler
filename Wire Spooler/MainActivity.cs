@@ -35,7 +35,7 @@ namespace Wire_Spooler
             var btnManual = FindViewById<Button>(Resource.Id.manualMode);
             var btnAlarm = FindViewById<Button>(Resource.Id.alarmScreen);
             var btnControlRst = FindViewById<Button>(Resource.Id.ctrlReset);
-            //var edtSpeed = FindViewById<EditText>(Resource.Id.editText); //Gets string from textbox
+            var btnMasterFault = FindViewById<Button>(Resource.Id.mstrFaultReset);
 
             AppState.Instance.SpoolSize = 0;
 
@@ -60,21 +60,18 @@ namespace Wire_Spooler
                 StartActivity(nextActivity);
             };
 
-            ////Test code* Send data to server after user clicks this button
-            //btnControlRst.Click += (s, e) =>
-            //{
-            //    int inches;
+            //Activate control Reset
+            btnControlRst.Click += (s, e) =>
+            {
+               // tab.SendCommand(7);
+            };
 
-            //    if (edtSpeed.Text != null)
-            //        inches = Int32.Parse(edtSpeed.Text);
-            //    else
-            //        inches = 10;
+            //Activate Fault Reset
+            btnMasterFault.Click += (s, e) =>
+            {
+               // tab.SendCommand(6);
+            };
 
-            //    if (inches < 0)
-            //        tab.CutWire(10);
-            //    else
-            //        tab.CutWire(inches);
-            //};
         }
     }
 }

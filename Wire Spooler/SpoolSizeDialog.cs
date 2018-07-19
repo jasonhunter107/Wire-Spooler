@@ -14,6 +14,7 @@ namespace Wire_Spooler
 {
    class SpoolSizeDialog : DialogFragment 
     {
+        public event EventHandler DialogClosed;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -24,6 +25,7 @@ namespace Wire_Spooler
             var submitBtn = view.FindViewById<Button>(Resource.Id.button13);
 
             var spoolSizeBox = view.FindViewById<EditText>(Resource.Id.editText2); //Gets string from textbox
+
 
             spoolSizeBox.Text = AppState.Instance.SpoolSize.ToString();
 
@@ -59,9 +61,13 @@ namespace Wire_Spooler
 
             // Set up a handler to dismiss this DialogFragment when this button is clicked.
             var closeBtn = view.FindViewById<Button>(Resource.Id.button13); //.Click += (sender, args) => Dismiss();
+            var customSize = view.FindViewById<EditText>(Resource.Id.editText2);
             closeBtn.Click += delegate
             {
-                AppState.Instance.SpoolSize = 30;
+                AppState.Instance.SpoolSize = string.IsNullOrWhiteSpace(customSize.Text)
+                 ? 30
+                : Convert.ToInt32(customSize.Text);
+
                 this.Dismiss();
             };
 
@@ -78,9 +84,16 @@ namespace Wire_Spooler
             //var secondOption = View.FindViewById<Button>(Resource.Id.secondSize);
             //var thirdOption = View.FindViewById<Button>(Resource.Id.thirdSize);
             //var fourthOption = View.FindViewById<Button>(Resource.Id.fourthSize);
+        }
 
+        public override void OnDismiss(IDialogInterface dialog)
+        {
+            base.OnDismiss(dialog);
 
-
+            if(DialogClosed != null)
+            {
+                DialogClosed(this, null);
+            }
         }
 
     }

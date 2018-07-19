@@ -24,6 +24,46 @@ namespace Wire_Spooler
 
             // Create your application here
             SetContentView(Resource.Layout.activity_manual);
+
+            var runBtn = FindViewById<Button>(Resource.Id.runBtn);
+            var speed = FindViewById<EditText>(Resource.Id.speedText);
+            runBtn.Click += (s, e) =>
+            {
+                //Do something
+                //if( tab.RunMotor( Int32.Parse(speed.Text)) )
+                //{
+
+                //}
+            };
+
+            var jogForward = FindViewById<Button>(Resource.Id.jogForward);
+            jogForward.Click += (s, e) =>
+            {
+                //Do something
+                //tab.SendCommand(9);
+            };
+
+            var jogReverse = FindViewById<Button>(Resource.Id.jogReverse);
+            jogForward.Click += (s, e) =>
+            {
+                //Do something
+                //tab.SendCommand(10);
+            };
+
+            var jogLeft = FindViewById<Button>(Resource.Id.jogLeft);
+            jogForward.Click += (s, e) =>
+            {
+                //Do something
+                //tab.SendCommand(11);
+            };
+
+            var jogRight = FindViewById<Button>(Resource.Id.jogRight);
+            jogForward.Click += (s, e) =>
+            {
+                //Do something
+                //tab.SendCommand(12);
+            };
+
         }
     }
 }
