@@ -22,13 +22,15 @@ namespace Wire_Spooler
         {
             base.OnCreate(savedInstanceState);
 
-            
-
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
             //127.0.0.1 (comp); 10.0.2.2:8081 (Tablet Emu); 172.18.15.250:10002 (PLC); "10.205.60.169"
-            TabletClient tab = new TabletClient("10.0.2.2", 8081);
+            //Stuff to do:
+            // - Insert TabletClient class into AppState
+            // - Create ReadStatusMsgAsync(Tcp Client c, int length) function to make sure we are reading 80 bytes
+            // - Make sure the send functions of the client class are also async
+            TabletClient tab = new TabletClient();
 
             //Button variables
             var btnAuto = FindViewById<Button>(Resource.Id.autoMode);

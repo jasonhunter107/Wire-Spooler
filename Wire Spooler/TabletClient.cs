@@ -21,13 +21,20 @@ namespace Wire_Spooler
     {
         TcpClient client;
 
-        public TabletClient(string hostname, int port)
+        public TabletClient()
         {
-            client = new TcpClient(hostname, port);
+            client = new TcpClient();
         }
 
-        public event EventHandler<int> wireLengthReceived;
+        public event EventHandler<int> WireLengthReceived;
+        public event EventHandler<string> StatusMsgReceived;
+        public event EventHandler<string> AlarmMsgReceived;
+        public event EventHandler<int> ServoPosReceived;
 
+        public Task ConnectAsync(string hostname, int port)
+        {
+            return client.ConnectAsync(hostname, port);
+        }
 
         public bool SpoolWire(int spoolSize, int quantity, int gauge, int lengthWire)
         {
@@ -35,8 +42,8 @@ namespace Wire_Spooler
             NetworkStream stream = client.GetStream();
 
             //String that is going to be sent to PLC
-            string stringData = string.Format("01 {0} {1} {2} {3}",spoolSize, quantity, gauge, lengthWire);
-            
+            string stringData = string.Format("01 {0} {1} {2} {3}", spoolSize, quantity, gauge, lengthWire);
+
             //Array that holds the network stream buffer
             byte[] recievedData = new byte[1024];
 
@@ -70,7 +77,7 @@ namespace Wire_Spooler
             var receivedString = Encoding.ASCII.GetString(recievedData, 0, length);
 
 
-            return (receivedString == "Done");
+            return (recievedData[0] == 0x01);
         }
 
         public bool RunMotor(int speed)
@@ -105,7 +112,7 @@ namespace Wire_Spooler
 
             Console.WriteLine(receivedString);
 
-            return (receivedString == "02 Ready");
+            return (recievedData[0] == 0x01);
         }
 
         public bool SendCommand(int code)
@@ -121,8 +128,8 @@ namespace Wire_Spooler
             switch (code)
             {
                 case 3:
-                 stringData = string.Format("03");
-                 break;
+                    stringData = string.Format("03");
+                    break;
 
                 case 4:
                     stringData = string.Format("04");
@@ -191,28 +198,50 @@ namespace Wire_Spooler
 
             Console.WriteLine(receivedString);
 
-            return (receivedString == "Done");
+            return (recievedData[0] == 0x01);
         }
 
 
-        public async Task ReadLengthAsync (CancellationToken cancellationToken)
+        public async Task ReceiveDataAsync(CancellationToken cancellationToken)
         {
-            var buffer = new byte[4096];
-            await client.ConnectAsync("10.0.2.2", 8081);
+            var buffer = new byte[1028];
 
+            var commandCode = 0x00;
             var stream = client.GetStream();
 
-            while(!cancellationToken.IsCancellationRequested)
+            while (!cancellationToken.IsCancellationRequested)
             {
-                var len = await stream.ReadAsync(buffer, 0, buffer.Length);
+                var len = await stream.ReadAsync(buffer, 0, 1);
+                commandCode = buffer[0];
 
-                if(buffer[0] == 0x30)
+                //Depending on command code, parse the incoming buffer
+                switch (commandCode)
                 {
-                    var wireLength = buffer[1];
+                    case 0x01:
 
-                    wireLengthReceived?.Invoke(this, wireLength);
+                        var length = await stream.ReadAsync(buffer, 0, 80);
+                        var statusMsg = Encoding.ASCII.GetString(buffer);
+
+                        //Update Status message (80 Bytes long) [0-79]
+                        StatusMsgReceived?.Invoke(this, statusMsg);
+                        break;
+
+                    case 0x02:
+                        //Update Alarm Message (80 Bytes long) [80-159]
+                        break;
+                    case 0x03:
+                        //Update Feed (4 bytes long (real) ) [160-163]
+                        break;
+                    case 0x04:
+                        //Update servo pos (4 bytes (reak) ) [164-167]
+                        break;
+                    default:
+                        //Unknown command
+                        break;
+
                 }
             }
+
         }
 
 

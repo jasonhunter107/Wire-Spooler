@@ -37,8 +37,20 @@ namespace Wire_Spooler
             };
 
             var jogForward = FindViewById<Button>(Resource.Id.jogForward);
-            jogForward.Click += (s, e) =>
+            jogForward.Touch += (s, e) =>
             {
+                if (e.Event.Action == MotionEventActions.ButtonRelease)
+                {
+                    Toast.MakeText(this, "Button Released", ToastLength.Short).Show();
+                }
+                else if(e.Event.Action == MotionEventActions.ButtonPress)
+                {
+                    Toast.MakeText(this, "Button Held", ToastLength.Short).Show();
+                }
+                else
+                {
+                    //Do nothing
+                }
                 //Do something
                 //tab.SendCommand(9);
             };

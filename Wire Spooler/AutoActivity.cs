@@ -17,14 +17,18 @@ namespace Wire_Spooler
     [Activity(Label = "AutoActivity")]
     public class AutoActivity : Activity
     {
+        private CancellationTokenSource readCancellationTokenSource;
+        private Task readTask;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Create your application here
             // Set our view from the "auto" layout resource
             SetContentView(Resource.Layout.activity_auto);
+
+            
 
             //Variables that are going to be needed
             var sizeOfSpool = 0;
@@ -36,11 +40,23 @@ namespace Wire_Spooler
 
 
             //Client class
-            TabletClient tab = new TabletClient("10.0.2.2", 8081);
+            TabletClient tab = new TabletClient();
+            await tab.ConnectAsync("10.0.2.2", 8081);
+
+            readCancellationTokenSource = new CancellationTokenSource();
+            readTask = tab.ReceiveDataAsync(readCancellationTokenSource.Token);
+
+            //Test out concurrency
+            var copyBtn = FindViewById<Button>(Resource.Id.copyBtn);
+            copyBtn.Click += async (s, e) =>
+            {
+                using (var cts = new CancellationTokenSource())
+                    await tab.ReceiveDataAsync(cts.Token);
+            };
 
             //Update the length feed everytime a value is read
             var lengthFeed = FindViewById<TextView>(Resource.Id.lengthFeed);
-            tab.wireLengthReceived += (s, e) =>
+            tab.StatusMsgReceived += (s, e) =>
             {
                 lengthFeed.Text = e.ToString();
             };
@@ -61,8 +77,8 @@ namespace Wire_Spooler
                 spoolDialog.Show(transaction, "Dialog Fragment");
 
 
-                sizeOfSpool = AppState.Instance.SpoolSize;
-                spoolTxt.Text = AppState.Instance.SpoolSize.ToString();
+                //sizeOfSpool = AppState.Instance.SpoolSize;
+                //spoolTxt.Text = AppState.Instance.SpoolSize.ToString();
             };
 
             //Update the spool size after the dialog closes
@@ -84,24 +100,27 @@ namespace Wire_Spooler
             createTable.Click += delegate
              {
                  //error check here
-                 if ((Int32.Parse(condText.Text) != 0) || !string.IsNullOrWhiteSpace(condText.Text))
+                 if (!string.IsNullOrWhiteSpace(condText.Text))
                  {
-                     var tempCondNum = Int32.Parse(condText.Text);
-                     conductorNum = tempCondNum;
-                     for (int i = 0; i < tempCondNum; i++)
+                     if (Int32.Parse(condText.Text) != 0)
                      {
-                         Conductor conductor = new Conductor()
+                         var tempCondNum = Int32.Parse(condText.Text);
+                         conductorNum = tempCondNum;
+                         for (int i = 0; i < tempCondNum; i++)
                          {
-                             Quantity = 0,
-                             Gauge = 0,
-                             Length = 0
-                         };
+                             Conductor conductor = new Conductor()
+                             {
+                                 Quantity = 0,
+                                 Gauge = 0,
+                                 Length = 0
+                             };
 
-                         lstConductor.Add(conductor);
+                             lstConductor.Add(conductor);
+                         }
+
+                         var adapter = new ListAdapter(this, lstConductor);
+                         lstData.Adapter = adapter;
                      }
-
-                     var adapter = new ListAdapter(this, lstConductor);
-                     lstData.Adapter = adapter;
                  }
              };
 
@@ -109,12 +128,15 @@ namespace Wire_Spooler
             * Run button
             *********************************************************************/
             var runButton = FindViewById<Button>(Resource.Id.runBtn);
-            runButton.Click += async delegate
+            runButton.Click += delegate
             {
                 if (conductorNum != 0)
                 {
+                    //If there is only 1 run that needs to be done
                     if (conductorNum == 1)
                     {
+                        Toast.MakeText(this, "Your job is about to start", ToastLength.Long).Show();
+
                         if (tab.SpoolWire(sizeOfSpool, AppState.Instance.Conductors[0].Quantity,
                             AppState.Instance.Conductors[0].Gauge, AppState.Instance.Conductors[0].Length))
                         {
@@ -128,9 +150,30 @@ namespace Wire_Spooler
                             alertDialog.Show();
                         }
                     }
+                    //
                     else
                     {
-                        var totalLength = AppState.Instance.Conductors[conductorNum - 1].Length;
+                        var totalLength = AppState.Instance.Conductors[0].Length;
+                        var listSize = AppState.Instance.Conductors.Count;
+                        var tempTotal = totalLength;
+
+                        //Iterate through the number of runs
+                        for (var i = 0; i < (listSize - 1); i++)
+                        {
+                            //Calculate new total amount of length that needs to be spooled for each run
+                            var temp = tempTotal - AppState.Instance.Conductors[i + 1].Length;
+
+                            //Send each run to the PLC
+                            tab.SpoolWire(AppState.Instance.SpoolSize, AppState.Instance.Conductors[i].Quantity,
+                                AppState.Instance.Conductors[i].Gauge, temp);
+
+                            //Assign new total Length and use that for next run
+                            tempTotal = AppState.Instance.Conductors[i + 1].Length;
+                        }
+
+                        //Finish Last Run
+                        tab.SpoolWire(AppState.Instance.SpoolSize, AppState.Instance.Conductors[listSize - 1].Quantity,
+                                AppState.Instance.Conductors[listSize - 1].Gauge, tempTotal);
 
                     }
                 }
@@ -154,7 +197,9 @@ namespace Wire_Spooler
                 this.Finish();
             };
 
-
+            /**********************************************************************
+            * Each time the spool size changes, modify its value in the AppState
+            *********************************************************************/
             spoolTxt.TextChanged += (s, e) =>
             {
                 sizeOfSpool = string.IsNullOrWhiteSpace(spoolTxt.Text)
