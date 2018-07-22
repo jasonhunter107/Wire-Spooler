@@ -29,7 +29,7 @@ namespace Wire_Spooler
             //Stuff to do:
             // - Insert TabletClient class into AppState
             // - Create ReadStatusMsgAsync(Tcp Client c, int length) function to make sure we are reading 80 bytes
-            // - Make sure the send functions of the client class are also async
+            // - Make sure the send functions of the client class are also async - DONE
             TabletClient tab = new TabletClient();
 
             //Button variables
