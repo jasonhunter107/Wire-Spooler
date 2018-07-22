@@ -21,7 +21,7 @@ namespace Wire_Spooler
             SpoolSize = 10;
         }
 
-        public int SpoolSize { get; set; }
+        public float SpoolSize { get; set; }
 
         public TabletClient tabClient = new TabletClient();
 

@@ -52,15 +52,15 @@ namespace Wire_Spooler
 
         public override long GetItemId(int position)
         {
-            return conductors[position].Quantity;
+            return 0;
         }
 
-        public long GetGauge(int position)
+        public float GetGauge(int position)
         {
             return conductors[position].Gauge;
         }
 
-        public long GetLength(int position)
+        public float GetLength(int position)
         {
             return conductors[position].Length;
         }

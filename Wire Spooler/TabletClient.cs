@@ -37,7 +37,13 @@ namespace Wire_Spooler
             return client.ConnectAsync(hostname, port);
         }
 
-        public async Task SendSpoolWireCodeAsync(CancellationToken cancellationToken, int spoolSize, int quantity, int gauge, int lengthWire)
+        public void Close()
+        {
+            client.Close();
+        }
+
+        public async Task SendSpoolWireCodeAsync(CancellationToken cancellationToken, 
+            int commandCode, int spoolSize, int quantity, int gauge, int lengthWire)
         {
             //Instantiate and declare network stream
             var stream = client.GetStream();
@@ -53,7 +59,6 @@ namespace Wire_Spooler
 
             //Quantity in bytes
             byte[] quantityBytes = new byte[4];
-            quantityBytes[0] = (byte)quantity;
 
             //Gauge in bytes
             byte[] gaugeBytes = new byte[4];
@@ -64,10 +69,30 @@ namespace Wire_Spooler
             lengthWireBytes[0] = (byte)lengthWire;
 
             buffer[0] = 0x01; //command code
-            Buffer.BlockCopy(spoolSizeBytes, 0, buffer, 1, 4); //spoolSize
-            Buffer.BlockCopy(quantityBytes, 0, buffer, 5, 4); //quantity
-            Buffer.BlockCopy(gaugeBytes, 0, buffer, 10, 4); //gauge
-            Buffer.BlockCopy(lengthWireBytes, 0, buffer, 14, 4); //length of wire
+
+            switch (commandCode)
+            {
+                case 100:
+                    Buffer.BlockCopy(lengthWireBytes, 0, buffer, 1, 4); //length of wire
+                    break;
+                case 103:
+                    Buffer.BlockCopy(spoolSizeBytes, 0, buffer, 1, 4); //spoolSize
+                    break;
+                case 105:
+                    Buffer.BlockCopy(quantityBytes, 0, buffer, 1, 4); //quantity
+                    break;
+                case 106:
+                    Buffer.BlockCopy(gaugeBytes, 0, buffer, 1, 4); //gauge
+                    break;
+                default:
+                    break;
+            }
+
+
+            //Buffer.BlockCopy(spoolSizeBytes, 0, buffer, 1, 4); //spoolSize
+            //Buffer.BlockCopy(quantityBytes, 0, buffer, 5, 4); //quantity
+            //Buffer.BlockCopy(gaugeBytes, 0, buffer, 10, 4); //gauge
+            //Buffer.BlockCopy(lengthWireBytes, 0, buffer, 14, 4); //length of wire
 
             //buffer [1-4] = spoolSize;
             //buffer [5-9] = quantity;
@@ -75,14 +100,14 @@ namespace Wire_Spooler
             //buffer [14-17] = lengthWire 
 
             //Send the bytes to the PLC
-            await stream.WriteAsync(buffer, 0, 18);
+            await stream.WriteAsync(buffer, 0, 5);
 
             await stream.FlushAsync();
 
 
         }
 
-        public async Task SendRunMotorCommandAsync(CancellationToken cancellationToken, int speed)
+        public async Task SendRunMotorCommandAsync(CancellationToken cancellationToken, float speed)
         {
             //Instantiate and declare network stream
             var stream = client.GetStream();
@@ -90,17 +115,126 @@ namespace Wire_Spooler
             //01 spoolSize, quantity, gauge, lengthWire
 
             //Array that holds the network stream buffer
-            byte[] speedBytes = new byte[4];
-            speedBytes[0] = (byte)speed;
+            byte[] speedBytes = BitConverter.GetBytes(speed);
 
             //Bytes that are going to be sent to PLC
             byte[] buffer = new byte[6];
 
-            buffer[0] = 0x02; //command code
+            buffer[0] = 0x68; //command code - 104
             Buffer.BlockCopy(speedBytes, 0, buffer, 1, 4); //speed
 
             //Send the bytes to the PLC
-            await stream.WriteAsync(buffer, 0, 18);
+            await stream.WriteAsync(buffer, 0, 5);
+
+            await stream.FlushAsync();
+        }
+
+        public async Task SendActuatorSpeedAsync(CancellationToken cancellationToken, float speed)
+        {
+            //Instantiate and declare network stream
+            var stream = client.GetStream();
+
+            //01 spoolSize, quantity, gauge, lengthWire
+
+            //Array that holds the network stream buffer
+            byte[] speedBytes = BitConverter.GetBytes(speed);
+
+            //Bytes that are going to be sent to PLC
+            byte[] buffer = new byte[6];
+
+            buffer[0] = 0x65; //command code - 101
+            Buffer.BlockCopy(speedBytes, 0, buffer, 1, 4); //speed
+
+            //Send the bytes to the PLC
+            await stream.WriteAsync(buffer, 0, 5);
+
+            await stream.FlushAsync();
+        }
+
+        public async Task SendSpoolSizeAsync(CancellationToken cancellationToken, float spoolSize)
+        {
+            //Instantiate and declare network stream
+            var stream = client.GetStream();
+
+            //01 spoolSize, quantity, gauge, lengthWire
+
+            //Array that holds the network stream buffer
+            byte[] speedBytes = BitConverter.GetBytes(spoolSize);
+
+            //Bytes that are going to be sent to PLC
+            byte[] buffer = new byte[6];
+
+            buffer[0] = 0x67; //command code
+            Buffer.BlockCopy(speedBytes, 0, buffer, 1, 4); //speed
+
+            //Send the bytes to the PLC
+            await stream.WriteAsync(buffer, 0, 5);
+
+            await stream.FlushAsync();
+        }
+
+        public async Task SendLengthAsync(CancellationToken cancellationToken, float length)
+        {
+            //Instantiate and declare network stream
+            var stream = client.GetStream();
+
+            //01 spoolSize, quantity, gauge, lengthWire
+
+            //Array that holds the network stream buffer
+            byte[] speedBytes = BitConverter.GetBytes(length);
+
+            //Bytes that are going to be sent to PLC
+            byte[] buffer = new byte[6];
+
+            buffer[0] = 0x64; //command code 100
+            Buffer.BlockCopy(speedBytes, 0, buffer, 1, 4); //speed
+
+            //Send the bytes to the PLC
+            await stream.WriteAsync(buffer, 0, 5);
+
+            await stream.FlushAsync();
+        }
+
+        public async Task SendQuantityAsync(CancellationToken cancellationToken, float quantity)
+        {
+            //Instantiate and declare network stream
+            var stream = client.GetStream();
+
+            //01 spoolSize, quantity, gauge, lengthWire
+
+            //Array that holds the network stream buffer
+            byte[] speedBytes = BitConverter.GetBytes(quantity);
+
+            //Bytes that are going to be sent to PLC
+            byte[] buffer = new byte[6];
+
+            buffer[0] = 0x69; //command code 105
+            Buffer.BlockCopy(speedBytes, 0, buffer, 1, 4); //speed
+
+            //Send the bytes to the PLC
+            await stream.WriteAsync(buffer, 0, 5);
+
+            await stream.FlushAsync();
+        }
+
+        public async Task SendGaugeCommandAsync(CancellationToken cancellationToken, float gauge)
+        {
+            //Instantiate and declare network stream
+            var stream = client.GetStream();
+
+            //01 spoolSize, quantity, gauge, lengthWire
+
+            //Array that holds the network stream buffer
+            byte[] speedBytes = BitConverter.GetBytes(gauge);
+
+            //Bytes that are going to be sent to PLC
+            byte[] buffer = new byte[6];
+
+            buffer[0] = 0x6A; //command code 106
+            Buffer.BlockCopy(speedBytes, 0, buffer, 1, 4); //speed
+
+            //Send the bytes to the PLC
+            await stream.WriteAsync(buffer, 0, 5);
 
             await stream.FlushAsync();
         }
@@ -117,6 +251,12 @@ namespace Wire_Spooler
             //The commands does not need another parameter to be sent like SpoolWire and RunMotor functions
             switch (code)
             {
+                case 0:
+                    bytes[0] = 0x00;
+                    break;
+                case 1:
+                    bytes[0] = 0x01;
+                    break;
                 case 3:
                     bytes[0] = 0x03;
                     break;
@@ -146,15 +286,15 @@ namespace Wire_Spooler
                     break;
 
                 case 10:
-                    bytes[0] = 0x10;
+                    bytes[0] = 0x0A;
                     break;
 
                 case 11:
-                    bytes[0] = 0x11;
+                    bytes[0] = 0x0B;
                     break;
 
                 case 12:
-                    bytes[0] = 0x12;
+                    bytes[0] = 0x0C;
                     break;
 
                 default:

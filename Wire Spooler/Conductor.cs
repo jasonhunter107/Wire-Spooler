@@ -15,10 +15,10 @@ namespace Wire_Spooler
     public class Conductor
     {
 
-        public int Quantity { get; set; }
+        public float Quantity { get; set; }
 
-        public int Length { get; set; }
+        public float Length { get; set; }
 
-        public int Gauge { get; set; }
+        public float Gauge { get; set; }
     }
 }

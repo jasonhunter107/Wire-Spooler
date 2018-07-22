@@ -45,25 +45,30 @@ namespace Wire_Spooler
             //Client class
             //TabletClient tab = new TabletClient();
             //10.0.2.2:8081 || 10.205.61.70:10002
-            await AppState.Instance.tabClient.ConnectAsync("10.0.2.2", 8081);
+            await AppState.Instance.tabClient.ConnectAsync("10.205.61.70", 10002);
 
             //Creating new Cancellation token for reading data
             readCancellationTokenSource = new CancellationTokenSource();
             readTask = AppState.Instance.tabClient.ReceiveDataAsync(readCancellationTokenSource.Token);
+
+
+            //Tell PLC that we are in Manual Mode
+            writeCancellationTokenSource = new CancellationTokenSource();
+            writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 0);
 
             //Test out concurrency by writing 3 to PLC
             var copyBtn = FindViewById<Button>(Resource.Id.copyBtn);
             copyBtn.Click += (s, e) =>
             {
                 writeCancellationTokenSource = new CancellationTokenSource();
-                writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 3);
+                writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 0);
             };
 
             //Update the length feed everytime a value is read
             var lengthFeed = FindViewById<TextView>(Resource.Id.lengthFeed);
             AppState.Instance.tabClient.StatusMsgReceived += (s, e) =>
             {
-                lengthFeed.Text = string.Format("{0} ft.",e.ToString());
+                lengthFeed.Text = string.Format("{0} ft.", e.ToString());
             };
 
             //Stuff to add:
@@ -103,6 +108,7 @@ namespace Wire_Spooler
 
             createTable.Click += delegate
              {
+                 writeCancellationTokenSource.Cancel();
                  //error check here
                  if (!string.IsNullOrWhiteSpace(condText.Text))
                  {
@@ -139,6 +145,8 @@ namespace Wire_Spooler
             var runButton = FindViewById<Button>(Resource.Id.runBtn);
             runButton.Click += delegate
             {
+                writeCancellationTokenSource.Cancel();
+
                 if (conductorNum != 0 || !string.IsNullOrWhiteSpace(condText.Text))
                 {
                     //If there is only 1 run that needs to be done
@@ -150,47 +158,62 @@ namespace Wire_Spooler
                         writeCancellationTokenSource = new CancellationTokenSource();
 
                         //Send data to the PLC
-                        writeTask = AppState.Instance.tabClient.SendSpoolWireCodeAsync(writeCancellationTokenSource.Token,
-                            sizeOfSpool, AppState.Instance.Conductors[0].Quantity,
-                            AppState.Instance.Conductors[0].Gauge, AppState.Instance.Conductors[0].Length);
+                        //writeTask = AppState.Instance.tabClient.SendSpoolWireCodeAsync(writeCancellationTokenSource.Token,
+                        //     sizeOfSpool, AppState.Instance.Conductors[0].Quantity,
+                        //    AppState.Instance.Conductors[0].Gauge, AppState.Instance.Conductors[0].Length);
+
+                        //Send data to the PLC
+                        writeTask = AppState.Instance.tabClient.SendLengthAsync(writeCancellationTokenSource.Token,
+                              AppState.Instance.Conductors[0].Length);
+
+                        writeTask = AppState.Instance.tabClient.SendSpoolSizeAsync(writeCancellationTokenSource.Token,
+                             (float)AppState.Instance.SpoolSize);
+
+                        writeTask = AppState.Instance.tabClient.SendQuantityAsync(writeCancellationTokenSource.Token,
+                             AppState.Instance.Conductors[0].Quantity);
+
+                        writeTask = AppState.Instance.tabClient.SendGaugeCommandAsync(writeCancellationTokenSource.Token,
+                              AppState.Instance.Conductors[0].Gauge);
+
+                        writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 11);
 
                         //Pop up a alert dialog indicating that the job is complete
-                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-                        alertDialog.SetTitle("Operation Status");
-                        alertDialog.SetMessage("Your job has been complete!");
-                        alertDialog.SetNeutralButton("OK", delegate
-                        {
-                            alertDialog.Dispose();
-                        });
-                        alertDialog.Show();
+                        //AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+                        //alertDialog.SetTitle("Operation Status");
+                        //alertDialog.SetMessage("Your job has been complete!");
+                        //alertDialog.SetNeutralButton("OK", delegate
+                        //{
+                        //    alertDialog.Dispose();
+                        //});
+                        //alertDialog.Show();
                     }
                     //If there are multiple runs for the operation
                     else
                     {
-                        var totalLength = AppState.Instance.Conductors[0].Length;
-                        var listSize = AppState.Instance.Conductors.Count;
-                        var tempTotal = totalLength;
-                        writeCancellationTokenSource = new CancellationTokenSource();
+                        //var totalLength = AppState.Instance.Conductors[0].Length;
+                        //var listSize = AppState.Instance.Conductors.Count;
+                        //var tempTotal = totalLength;
+                        //writeCancellationTokenSource = new CancellationTokenSource();
 
-                        //Iterate through the number of runs
-                        for (var i = 0; i < (listSize - 1); i++)
-                        {
-                            //Calculate new total amount of length that needs to be spooled for each run
-                            var temp = tempTotal - AppState.Instance.Conductors[i + 1].Length;
+                        ////Iterate through the number of runs
+                        //for (var i = 0; i < (listSize - 1); i++)
+                        //{
+                        //    //Calculate new total amount of length that needs to be spooled for each run
+                        //    var temp = tempTotal - AppState.Instance.Conductors[i + 1].Length;
 
-                            //Send each run to the PLC
-                            writeTask = AppState.Instance.tabClient.SendSpoolWireCodeAsync(writeCancellationTokenSource.Token,
-                                AppState.Instance.SpoolSize, AppState.Instance.Conductors[i].Quantity,
-                                AppState.Instance.Conductors[i].Gauge, temp);
+                        //    //Send each run to the PLC
+                        //    writeTask = AppState.Instance.tabClient.SendSpoolWireCodeAsync(writeCancellationTokenSource.Token,
+                        //        100, AppState.Instance.SpoolSize, AppState.Instance.Conductors[i].Quantity,
+                        //        AppState.Instance.Conductors[i].Gauge, temp);
 
-                            //Assign new total Length and use that for next run
-                            tempTotal = AppState.Instance.Conductors[i + 1].Length;
-                        }
+                        //    //Assign new total Length and use that for next run
+                        //    tempTotal = AppState.Instance.Conductors[i + 1].Length;
+                        //}
 
-                        //Finish Last Run
-                        writeTask = AppState.Instance.tabClient.SendSpoolWireCodeAsync(writeCancellationTokenSource.Token,
-                            AppState.Instance.SpoolSize, AppState.Instance.Conductors[listSize - 1].Quantity,
-                                 AppState.Instance.Conductors[listSize - 1].Gauge, tempTotal);
+                        ////Finish Last Run
+                        //writeTask = AppState.Instance.tabClient.SendSpoolWireCodeAsync(writeCancellationTokenSource.Token,
+                        //    100, AppState.Instance.SpoolSize, AppState.Instance.Conductors[listSize - 1].Quantity,
+                        //         AppState.Instance.Conductors[listSize - 1].Gauge, tempTotal);
 
                     }
                 }
@@ -229,8 +252,10 @@ namespace Wire_Spooler
             base.OnDestroy();
             readCancellationTokenSource.Cancel();
 
-            if(writeCancellationTokenSource != null)
-            writeCancellationTokenSource.Cancel();
+            AppState.Instance.tabClient.Close();
+
+            if (writeCancellationTokenSource != null)
+                writeCancellationTokenSource.Cancel();
         }
     }
 }

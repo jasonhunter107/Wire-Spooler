@@ -25,11 +25,11 @@
 
   <LinearLayout
       android:id="@+id/linearLayout3"
-      android:layout_width="1134dp"
+      android:layout_width="1322dp"
       android:layout_height="114dp"
-      android:orientation="horizontal"
       android:descendantFocusability="beforeDescendants"
       android:focusableInTouchMode="true"
+      android:orientation="horizontal"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.262"
@@ -37,11 +37,11 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="84dp"
+        android:layout_width="178dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Set Speed:"
-        android:textSize="40sp" />
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/speedText"
@@ -52,20 +52,36 @@
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/textView11"
-        android:layout_width="1dp"
+        android:id="@+id/actuatorSpeed"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Length: "
-        android:textSize="40sp" />
+        android:text="Set Actuator Speed:"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/actSpeedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="numberSigned" />
 
     <TextView
-        android:id="@+id/feed"
-        android:layout_width="120dp"
+        android:id="@+id/spoolSizeText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="0"
-        android:textSize="40sp" />
+        android:text="Set Spool Size:"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/spoolSizeNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="numberSigned" />
 
   </LinearLayout>
 
@@ -113,10 +129,63 @@
       android:id="@+id/runBtn"
       android:layout_width="206dp"
       android:layout_height="86dp"
-      android:layout_marginBottom="284dp"
-      android:text="Run"
+      android:layout_marginBottom="340dp"
+      android:text="Set Motor Speed"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.176"
       app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+      android:id="@+id/actSpeedBtn"
+      android:layout_width="206dp"
+      android:layout_height="83dp"
+      android:layout_marginEnd="488dp"
+      android:text="Set Actuator Speed"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+  <Button
+      android:id="@+id/spoolSizeBtn"
+      android:layout_width="206dp"
+      android:layout_height="86dp"
+      android:layout_marginEnd="68dp"
+      android:text="Set Spool Size"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+  <Button
+      android:id="@+id/button2"
+      android:layout_width="220dp"
+      android:layout_height="84dp"
+      android:layout_marginBottom="180dp"
+      android:layout_marginStart="536dp"
+      android:text="Run"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <TextView
+      android:id="@+id/textView11"
+      android:layout_width="87dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="6dp"
+      android:layout_marginStart="37dp"
+      android:layout_weight="1"
+      android:text="Length: "
+      android:textSize="25sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <TextView
+      android:id="@+id/feed"
+      android:layout_width="43dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="6dp"
+      android:layout_marginStart="25dp"
+      android:layout_weight="1"
+      android:text="0"
+      android:textSize="25sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/textView11" />
 
 </android.support.constraint.ConstraintLayout>
