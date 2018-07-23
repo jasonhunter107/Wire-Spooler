@@ -2532,14 +2532,14 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080037
 			public const int SYM = 2131230775;
 			
-			// aapt resource value: 0x7f0800b7
-			public const int actSpeedBtn = 2131230903;
+			// aapt resource value: 0x7f0800b8
+			public const int actSpeedBtn = 2131230904;
 			
 			// aapt resource value: 0x7f0800b1
 			public const int actSpeedText = 2131230897;
 			
-			// aapt resource value: 0x7f0800d6
-			public const int action0 = 2131230934;
+			// aapt resource value: 0x7f0800d7
+			public const int action0 = 2131230935;
 			
 			// aapt resource value: 0x7f080089
 			public const int action_bar = 2131230857;
@@ -2562,17 +2562,17 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080067
 			public const int action_bar_title = 2131230823;
 			
-			// aapt resource value: 0x7f0800d3
-			public const int action_container = 2131230931;
+			// aapt resource value: 0x7f0800d4
+			public const int action_container = 2131230932;
 			
 			// aapt resource value: 0x7f08008a
 			public const int action_context_bar = 2131230858;
 			
-			// aapt resource value: 0x7f0800da
-			public const int action_divider = 2131230938;
+			// aapt resource value: 0x7f0800db
+			public const int action_divider = 2131230939;
 			
-			// aapt resource value: 0x7f0800d4
-			public const int action_image = 2131230932;
+			// aapt resource value: 0x7f0800d5
+			public const int action_image = 2131230933;
 			
 			// aapt resource value: 0x7f080003
 			public const int action_menu_divider = 2131230723;
@@ -2589,11 +2589,11 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080069
 			public const int action_mode_close_button = 2131230825;
 			
-			// aapt resource value: 0x7f0800d5
-			public const int action_text = 2131230933;
+			// aapt resource value: 0x7f0800d6
+			public const int action_text = 2131230934;
 			
-			// aapt resource value: 0x7f0800e3
-			public const int actions = 2131230947;
+			// aapt resource value: 0x7f0800e4
+			public const int actions = 2131230948;
 			
 			// aapt resource value: 0x7f08006a
 			public const int activity_chooser_view_content = 2131230826;
@@ -2637,17 +2637,14 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08003d
 			public const int bottom = 2131230781;
 			
-			// aapt resource value: 0x7f0800d0
-			public const int button13 = 2131230928;
-			
-			// aapt resource value: 0x7f0800b8
-			public const int button2 = 2131230904;
+			// aapt resource value: 0x7f0800d1
+			public const int button13 = 2131230929;
 			
 			// aapt resource value: 0x7f080070
 			public const int buttonPanel = 2131230832;
 			
-			// aapt resource value: 0x7f0800d7
-			public const int cancel_action = 2131230935;
+			// aapt resource value: 0x7f0800d8
+			public const int cancel_action = 2131230936;
 			
 			// aapt resource value: 0x7f080045
 			public const int center = 2131230789;
@@ -2664,8 +2661,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080080
 			public const int checkbox = 2131230848;
 			
-			// aapt resource value: 0x7f0800df
-			public const int chronometer = 2131230943;
+			// aapt resource value: 0x7f0800e0
+			public const int chronometer = 2131230944;
 			
 			// aapt resource value: 0x7f08004e
 			public const int clip_horizontal = 2131230798;
@@ -2679,14 +2676,14 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f0800a1
 			public const int conductorList = 2131230881;
 			
-			// aapt resource value: 0x7f0800bd
-			public const int container = 2131230909;
+			// aapt resource value: 0x7f0800be
+			public const int container = 2131230910;
 			
 			// aapt resource value: 0x7f080073
 			public const int contentPanel = 2131230835;
 			
-			// aapt resource value: 0x7f0800be
-			public const int coordinator = 2131230910;
+			// aapt resource value: 0x7f0800bf
+			public const int coordinator = 2131230911;
 			
 			// aapt resource value: 0x7f0800a0
 			public const int copyBtn = 2131230880;
@@ -2706,20 +2703,20 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08006d
 			public const int default_activity_button = 2131230829;
 			
-			// aapt resource value: 0x7f0800c0
-			public const int design_bottom_sheet = 2131230912;
+			// aapt resource value: 0x7f0800c1
+			public const int design_bottom_sheet = 2131230913;
+			
+			// aapt resource value: 0x7f0800c8
+			public const int design_menu_item_action_area = 2131230920;
 			
 			// aapt resource value: 0x7f0800c7
-			public const int design_menu_item_action_area = 2131230919;
+			public const int design_menu_item_action_area_stub = 2131230919;
 			
 			// aapt resource value: 0x7f0800c6
-			public const int design_menu_item_action_area_stub = 2131230918;
+			public const int design_menu_item_text = 2131230918;
 			
 			// aapt resource value: 0x7f0800c5
-			public const int design_menu_item_text = 2131230917;
-			
-			// aapt resource value: 0x7f0800c4
-			public const int design_navigation_view = 2131230916;
+			public const int design_navigation_view = 2131230917;
 			
 			// aapt resource value: 0x7f080060
 			public const int dimensions = 2131230816;
@@ -2730,8 +2727,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080020
 			public const int disableHome = 2131230752;
 			
-			// aapt resource value: 0x7f0800cf
-			public const int editText2 = 2131230927;
+			// aapt resource value: 0x7f0800d0
+			public const int editText2 = 2131230928;
 			
 			// aapt resource value: 0x7f08009c
 			public const int editText3 = 2131230876;
@@ -2742,8 +2739,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080030
 			public const int end = 2131230768;
 			
-			// aapt resource value: 0x7f0800e5
-			public const int end_padder = 2131230949;
+			// aapt resource value: 0x7f0800e6
+			public const int end_padder = 2131230950;
 			
 			// aapt resource value: 0x7f08003f
 			public const int enterAlways = 2131230783;
@@ -2760,8 +2757,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08007f
 			public const int expanded_menu = 2131230847;
 			
-			// aapt resource value: 0x7f0800ba
-			public const int feed = 2131230906;
+			// aapt resource value: 0x7f0800bb
+			public const int feed = 2131230907;
 			
 			// aapt resource value: 0x7f080050
 			public const int fill = 2131230800;
@@ -2772,8 +2769,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080048
 			public const int fill_vertical = 2131230792;
 			
-			// aapt resource value: 0x7f0800ca
-			public const int firstSize = 2131230922;
+			// aapt resource value: 0x7f0800cb
+			public const int firstSize = 2131230923;
 			
 			// aapt resource value: 0x7f080054
 			public const int @fixed = 2131230804;
@@ -2781,11 +2778,11 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080065
 			public const int forever = 2131230821;
 			
-			// aapt resource value: 0x7f0800cd
-			public const int fourthSize = 2131230925;
+			// aapt resource value: 0x7f0800ce
+			public const int fourthSize = 2131230926;
 			
-			// aapt resource value: 0x7f0800d2
-			public const int gaugeText = 2131230930;
+			// aapt resource value: 0x7f0800d3
+			public const int gaugeText = 2131230931;
 			
 			// aapt resource value: 0x7f08009f
 			public const int genBtn = 2131230879;
@@ -2805,8 +2802,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08006f
 			public const int icon = 2131230831;
 			
-			// aapt resource value: 0x7f0800e4
-			public const int icon_group = 2131230948;
+			// aapt resource value: 0x7f0800e5
+			public const int icon_group = 2131230949;
 			
 			// aapt resource value: 0x7f08003a
 			public const int ifRoom = 2131230778;
@@ -2814,8 +2811,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08006c
 			public const int image = 2131230828;
 			
-			// aapt resource value: 0x7f0800e0
-			public const int info = 2131230944;
+			// aapt resource value: 0x7f0800e1
+			public const int info = 2131230945;
 			
 			// aapt resource value: 0x7f080057
 			public const int invisible = 2131230807;
@@ -2838,8 +2835,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f0800b5
 			public const int jogRight = 2131230901;
 			
-			// aapt resource value: 0x7f0800bc
-			public const int largeLabel = 2131230908;
+			// aapt resource value: 0x7f0800bd
+			public const int largeLabel = 2131230909;
 			
 			// aapt resource value: 0x7f080049
 			public const int left = 2131230793;
@@ -2874,17 +2871,17 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f0800a7
 			public const int manualMode = 2131230887;
 			
-			// aapt resource value: 0x7f0800e8
-			public const int masked = 2131230952;
+			// aapt resource value: 0x7f0800e9
+			public const int masked = 2131230953;
 			
-			// aapt resource value: 0x7f0800d9
-			public const int media_actions = 2131230937;
+			// aapt resource value: 0x7f0800da
+			public const int media_actions = 2131230938;
 			
 			// aapt resource value: 0x7f0800a3
 			public const int menuBtn = 2131230883;
 			
-			// aapt resource value: 0x7f0800e6
-			public const int message = 2131230950;
+			// aapt resource value: 0x7f0800e7
+			public const int message = 2131230951;
 			
 			// aapt resource value: 0x7f080031
 			public const int middle = 2131230769;
@@ -2898,8 +2895,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080028
 			public const int multiply = 2131230760;
 			
-			// aapt resource value: 0x7f0800c3
-			public const int navigation_header_container = 2131230915;
+			// aapt resource value: 0x7f0800c4
+			public const int navigation_header_container = 2131230916;
 			
 			// aapt resource value: 0x7f08003b
 			public const int never = 2131230779;
@@ -2910,14 +2907,14 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08001e
 			public const int normal = 2131230750;
 			
-			// aapt resource value: 0x7f0800e2
-			public const int notification_background = 2131230946;
+			// aapt resource value: 0x7f0800e3
+			public const int notification_background = 2131230947;
+			
+			// aapt resource value: 0x7f0800dd
+			public const int notification_main_column = 2131230941;
 			
 			// aapt resource value: 0x7f0800dc
-			public const int notification_main_column = 2131230940;
-			
-			// aapt resource value: 0x7f0800db
-			public const int notification_main_column_container = 2131230939;
+			public const int notification_main_column_container = 2131230940;
 			
 			// aapt resource value: 0x7f08005c
 			public const int packed = 2131230812;
@@ -2946,8 +2943,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080007
 			public const int progress_horizontal = 2131230727;
 			
-			// aapt resource value: 0x7f0800d1
-			public const int quantityText = 2131230929;
+			// aapt resource value: 0x7f0800d2
+			public const int quantityText = 2131230930;
 			
 			// aapt resource value: 0x7f080082
 			public const int radio = 2131230850;
@@ -2955,11 +2952,11 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08004a
 			public const int right = 2131230794;
 			
-			// aapt resource value: 0x7f0800e1
-			public const int right_icon = 2131230945;
+			// aapt resource value: 0x7f0800e2
+			public const int right_icon = 2131230946;
 			
-			// aapt resource value: 0x7f0800dd
-			public const int right_side = 2131230941;
+			// aapt resource value: 0x7f0800de
+			public const int right_side = 2131230942;
 			
 			// aapt resource value: 0x7f0800a2
 			public const int runBtn = 2131230882;
@@ -3021,11 +3018,14 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080096
 			public const int search_voice_btn = 2131230870;
 			
-			// aapt resource value: 0x7f0800cb
-			public const int secondSize = 2131230923;
+			// aapt resource value: 0x7f0800cc
+			public const int secondSize = 2131230924;
 			
 			// aapt resource value: 0x7f080097
 			public const int select_dialog_listview = 2131230871;
+			
+			// aapt resource value: 0x7f0800b7
+			public const int setSpeedBtn = 2131230903;
 			
 			// aapt resource value: 0x7f080081
 			public const int shortcut = 2131230849;
@@ -3039,14 +3039,14 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080025
 			public const int showTitle = 2131230757;
 			
-			// aapt resource value: 0x7f0800bb
-			public const int smallLabel = 2131230907;
+			// aapt resource value: 0x7f0800bc
+			public const int smallLabel = 2131230908;
+			
+			// aapt resource value: 0x7f0800c3
+			public const int snackbar_action = 2131230915;
 			
 			// aapt resource value: 0x7f0800c2
-			public const int snackbar_action = 2131230914;
-			
-			// aapt resource value: 0x7f0800c1
-			public const int snackbar_text = 2131230913;
+			public const int snackbar_text = 2131230914;
 			
 			// aapt resource value: 0x7f080043
 			public const int snap = 2131230787;
@@ -3090,8 +3090,11 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08004b
 			public const int start = 2131230795;
 			
-			// aapt resource value: 0x7f0800d8
-			public const int status_bar_latest_event_content = 2131230936;
+			// aapt resource value: 0x7f0800d9
+			public const int status_bar_latest_event_content = 2131230937;
+			
+			// aapt resource value: 0x7f0800b9
+			public const int stopBtn = 2131230905;
 			
 			// aapt resource value: 0x7f080083
 			public const int submenuarrow = 2131230851;
@@ -3123,23 +3126,23 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f0800ae
 			public const int textView10 = 2131230894;
 			
-			// aapt resource value: 0x7f0800b9
-			public const int textView11 = 2131230905;
+			// aapt resource value: 0x7f0800ba
+			public const int textView11 = 2131230906;
 			
 			// aapt resource value: 0x7f080098
 			public const int textView2 = 2131230872;
 			
-			// aapt resource value: 0x7f0800c9
-			public const int textView3 = 2131230921;
+			// aapt resource value: 0x7f0800ca
+			public const int textView3 = 2131230922;
 			
-			// aapt resource value: 0x7f0800ce
-			public const int textView4 = 2131230926;
+			// aapt resource value: 0x7f0800cf
+			public const int textView4 = 2131230927;
 			
 			// aapt resource value: 0x7f080099
 			public const int textView9 = 2131230873;
 			
-			// aapt resource value: 0x7f0800c8
-			public const int text_input_password_toggle = 2131230920;
+			// aapt resource value: 0x7f0800c9
+			public const int text_input_password_toggle = 2131230921;
 			
 			// aapt resource value: 0x7f080014
 			public const int textinput_counter = 2131230740;
@@ -3147,11 +3150,11 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080015
 			public const int textinput_error = 2131230741;
 			
-			// aapt resource value: 0x7f0800cc
-			public const int thirdSize = 2131230924;
+			// aapt resource value: 0x7f0800cd
+			public const int thirdSize = 2131230925;
 			
-			// aapt resource value: 0x7f0800de
-			public const int time = 2131230942;
+			// aapt resource value: 0x7f0800df
+			public const int time = 2131230943;
 			
 			// aapt resource value: 0x7f08001c
 			public const int title = 2131230748;
@@ -3168,8 +3171,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08007b
 			public const int topPanel = 2131230843;
 			
-			// aapt resource value: 0x7f0800bf
-			public const int touch_outside = 2131230911;
+			// aapt resource value: 0x7f0800c0
+			public const int touch_outside = 2131230912;
 			
 			// aapt resource value: 0x7f08000f
 			public const int transition_current_scene = 2131230735;
@@ -3198,8 +3201,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800e7
-			public const int visible = 2131230951;
+			// aapt resource value: 0x7f0800e8
+			public const int visible = 2131230952;
 			
 			// aapt resource value: 0x7f08003c
 			public const int withText = 2131230780;

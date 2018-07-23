@@ -27,7 +27,7 @@ namespace Wire_Spooler
 
             //127.0.0.1 (comp); 10.0.2.2:8081 (Tablet Emu); 172.18.15.250:10002 (PLC); "10.205.60.169"
             //Stuff to do:
-            // - Insert TabletClient class into AppState
+            // - Insert TabletClient class into AppState - DONE
             // - Create ReadStatusMsgAsync(Tcp Client c, int length) function to make sure we are reading 80 bytes
             // - Make sure the send functions of the client class are also async - DONE
             TabletClient tab = new TabletClient();
