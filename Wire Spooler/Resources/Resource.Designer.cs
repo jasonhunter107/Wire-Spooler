@@ -2532,8 +2532,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080037
 			public const int SYM = 2131230775;
 			
-			// aapt resource value: 0x7f0800b9
-			public const int actSpeedBtn = 2131230905;
+			// aapt resource value: 0x7f0800b7
+			public const int actSpeedBtn = 2131230903;
 			
 			// aapt resource value: 0x7f0800b1
 			public const int actSpeedText = 2131230897;
@@ -2640,8 +2640,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f0800d0
 			public const int button13 = 2131230928;
 			
-			// aapt resource value: 0x7f0800ba
-			public const int button2 = 2131230906;
+			// aapt resource value: 0x7f0800b8
+			public const int button2 = 2131230904;
 			
 			// aapt resource value: 0x7f080070
 			public const int buttonPanel = 2131230832;
@@ -2760,8 +2760,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f08007f
 			public const int expanded_menu = 2131230847;
 			
-			// aapt resource value: 0x7f0800b4
-			public const int feed = 2131230900;
+			// aapt resource value: 0x7f0800ba
+			public const int feed = 2131230906;
 			
 			// aapt resource value: 0x7f080050
 			public const int fill = 2131230800;
@@ -2826,17 +2826,17 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f080000
 			public const int item_touch_helper_previous_elevation = 2131230720;
 			
-			// aapt resource value: 0x7f0800b5
-			public const int jogForward = 2131230901;
+			// aapt resource value: 0x7f0800b3
+			public const int jogForward = 2131230899;
+			
+			// aapt resource value: 0x7f0800b4
+			public const int jogLeft = 2131230900;
 			
 			// aapt resource value: 0x7f0800b6
-			public const int jogLeft = 2131230902;
+			public const int jogReverse = 2131230902;
 			
-			// aapt resource value: 0x7f0800b8
-			public const int jogReverse = 2131230904;
-			
-			// aapt resource value: 0x7f0800b7
-			public const int jogRight = 2131230903;
+			// aapt resource value: 0x7f0800b5
+			public const int jogRight = 2131230901;
 			
 			// aapt resource value: 0x7f0800bc
 			public const int largeLabel = 2131230908;
@@ -3123,8 +3123,8 @@ namespace Wire_Spooler
 			// aapt resource value: 0x7f0800ae
 			public const int textView10 = 2131230894;
 			
-			// aapt resource value: 0x7f0800b3
-			public const int textView11 = 2131230899;
+			// aapt resource value: 0x7f0800b9
+			public const int textView11 = 2131230905;
 			
 			// aapt resource value: 0x7f080098
 			public const int textView2 = 2131230872;

@@ -308,16 +308,6 @@ namespace Wire_Spooler
 
             await stream.FlushAsync();
 
-
-            //var length = stream.Read(recievedData, 0, recievedData.Length);
-
-
-            ////Convert the data that was received from the PLC to a string
-            //var receivedString = Encoding.ASCII.GetString(recievedData, 0, length);
-
-            //Console.WriteLine(receivedString);
-
-            //return (recievedData[0] == 0x01);
         }
 
 

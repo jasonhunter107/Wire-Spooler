@@ -158,11 +158,21 @@
       android:id="@+id/button2"
       android:layout_width="220dp"
       android:layout_height="84dp"
-      android:layout_marginBottom="180dp"
-      android:layout_marginStart="536dp"
+      android:layout_marginBottom="184dp"
+      android:layout_marginStart="356dp"
       android:text="Run"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+      android:id="@+id/stopBtn"
+      android:layout_width="220dp"
+      android:layout_height="84dp"
+      android:layout_marginBottom="23dp"
+      android:layout_marginStart="64dp"
+      android:text="Stop"
+      app:layout_constraintBottom_toTopOf="@+id/jogLeft"
+      app:layout_constraintStart_toEndOf="@+id/button2" />
 
   <TextView
       android:id="@+id/textView11"

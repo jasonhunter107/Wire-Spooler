@@ -45,14 +45,14 @@ namespace Wire_Spooler
             //Client class
             //TabletClient tab = new TabletClient();
             //10.0.2.2:8081 || 10.205.61.70:10002
-            await AppState.Instance.tabClient.ConnectAsync("10.205.61.70", 10002);
+            await AppState.Instance.tabClient.ConnectAsync("10.0.2.2", 8081);
 
             //Creating new Cancellation token for reading data
             readCancellationTokenSource = new CancellationTokenSource();
             readTask = AppState.Instance.tabClient.ReceiveDataAsync(readCancellationTokenSource.Token);
 
 
-            //Tell PLC that we are in Manual Mode
+            //Tell PLC that we are in Auto Mode
             writeCancellationTokenSource = new CancellationTokenSource();
             writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 0);
 
@@ -143,7 +143,7 @@ namespace Wire_Spooler
             * Run button
             *********************************************************************/
             var runButton = FindViewById<Button>(Resource.Id.runBtn);
-            runButton.Click += delegate
+            runButton.Click += async delegate
             {
                 writeCancellationTokenSource.Cancel();
 
@@ -166,14 +166,22 @@ namespace Wire_Spooler
                         writeTask = AppState.Instance.tabClient.SendLengthAsync(writeCancellationTokenSource.Token,
                               AppState.Instance.Conductors[0].Length);
 
+                        await Task.Delay(200);
+
                         writeTask = AppState.Instance.tabClient.SendSpoolSizeAsync(writeCancellationTokenSource.Token,
-                             (float)AppState.Instance.SpoolSize);
+                             (float)sizeOfSpool);
+
+                        await Task.Delay(200);
 
                         writeTask = AppState.Instance.tabClient.SendQuantityAsync(writeCancellationTokenSource.Token,
                              AppState.Instance.Conductors[0].Quantity);
 
+                        await Task.Delay(200);
+
                         writeTask = AppState.Instance.tabClient.SendGaugeCommandAsync(writeCancellationTokenSource.Token,
                               AppState.Instance.Conductors[0].Gauge);
+
+                        await Task.Delay(200);
 
                         writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 11);
 
