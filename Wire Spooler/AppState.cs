@@ -23,7 +23,7 @@ namespace Wire_Spooler
 
         public float SpoolSize { get; set; }
 
-        public TabletClient tabClient = new TabletClient();
+        public TabletClient TabClient = new TabletClient();
 
         public List<Conductor> Conductors = new List<Conductor>();
     }

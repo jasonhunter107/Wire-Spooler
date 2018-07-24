@@ -30,11 +30,11 @@ namespace Wire_Spooler
             //TabletClient tab = new TabletClient();
             //10.0.2.2:8081 || 10.205.61.70:10002
             //await AppState.Instance.tabClient.ConnectAsync("10.205.61.70", 10002);
-            await AppState.Instance.tabClient.ConnectAsync("10.0.2.2", 8081);
+            await AppState.Instance.TabClient.ConnectAsync("10.0.2.2", 8081);
 
             //Tell PLC that we are in Manual Mode
             writeCancellationTokenSource = new CancellationTokenSource();
-            writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 1);
+            writeTask = AppState.Instance.TabClient.SendCommandAsync(writeCancellationTokenSource.Token, 1);
 
             // Create your application here
             SetContentView(Resource.Layout.activity_manual);
@@ -48,7 +48,7 @@ namespace Wire_Spooler
             speedBtn.Click += (s, e) =>
             {
                 writeCancellationTokenSource = new CancellationTokenSource();
-                writeTask = AppState.Instance.tabClient.SendRunMotorCommandAsync(writeCancellationTokenSource.Token,
+                writeTask = AppState.Instance.TabClient.SendRunMotorCommandAsync(writeCancellationTokenSource.Token,
                     ( (float)speedNum ));
             };
             /**********************************************************************
@@ -71,7 +71,7 @@ namespace Wire_Spooler
             actSpeedBtn.Click += (s, e) =>
             {
                 writeCancellationTokenSource = new CancellationTokenSource();
-                writeTask = AppState.Instance.tabClient.SendActuatorSpeedAsync(writeCancellationTokenSource.Token, 
+                writeTask = AppState.Instance.TabClient.SendActuatorSpeedAsync(writeCancellationTokenSource.Token, 
                      (float)actSpeedNum );
             };
 
@@ -95,7 +95,7 @@ namespace Wire_Spooler
             spoolSizeBtn.Click += (s, e) =>
             {
                 writeCancellationTokenSource = new CancellationTokenSource();
-                writeTask = AppState.Instance.tabClient.SendSpoolSizeAsync(writeCancellationTokenSource.Token, 
+                writeTask = AppState.Instance.TabClient.SendSpoolSizeAsync(writeCancellationTokenSource.Token, 
                     (float)spoolSizeNum);
             };
             /**********************************************************************
@@ -128,7 +128,7 @@ namespace Wire_Spooler
                 //    //Do nothing
                 //}
                 writeCancellationTokenSource = new CancellationTokenSource();
-                writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 3);
+                writeTask = AppState.Instance.TabClient.SendCommandAsync(writeCancellationTokenSource.Token, 3);
             };
 
             /**********************************************************************
@@ -138,7 +138,7 @@ namespace Wire_Spooler
             jogReverse.Click += (s, e) =>
             {
                 writeCancellationTokenSource = new CancellationTokenSource();
-                writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 4);
+                writeTask = AppState.Instance.TabClient.SendCommandAsync(writeCancellationTokenSource.Token, 4);
             };
 
             /**********************************************************************
@@ -148,7 +148,7 @@ namespace Wire_Spooler
             jogLeft.Click += (s, e) =>
             {
                 writeCancellationTokenSource = new CancellationTokenSource();
-                writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 5);
+                writeTask = AppState.Instance.TabClient.SendCommandAsync(writeCancellationTokenSource.Token, 5);
             };
 
             /**********************************************************************
@@ -158,7 +158,7 @@ namespace Wire_Spooler
             jogRight.Click += (s, e) =>
             {
                 writeCancellationTokenSource = new CancellationTokenSource();
-                writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 6);
+                writeTask = AppState.Instance.TabClient.SendCommandAsync(writeCancellationTokenSource.Token, 6);
             };
 
             /**********************************************************************
@@ -178,7 +178,7 @@ namespace Wire_Spooler
                 else
                 {
                     writeCancellationTokenSource = new CancellationTokenSource();
-                    writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 11);
+                    writeTask = AppState.Instance.TabClient.SendCommandAsync(writeCancellationTokenSource.Token, 11);
                 }
             };
 
@@ -189,7 +189,7 @@ namespace Wire_Spooler
             stopBtn.Click += (s, e) =>
             {
                 writeCancellationTokenSource = new CancellationTokenSource();
-                writeTask = AppState.Instance.tabClient.SendCommandAsync(writeCancellationTokenSource.Token, 10);
+                writeTask = AppState.Instance.TabClient.SendCommandAsync(writeCancellationTokenSource.Token, 10);
             };
 
         }
@@ -204,7 +204,7 @@ namespace Wire_Spooler
             if (readCancellationTokenSource != null)
                 readCancellationTokenSource.Cancel();
 
-            AppState.Instance.tabClient.Close();
+            AppState.Instance.TabClient.Close();
 
             if (writeCancellationTokenSource != null)
                 writeCancellationTokenSource.Cancel();

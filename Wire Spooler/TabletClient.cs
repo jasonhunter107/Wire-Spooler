@@ -297,6 +297,11 @@ namespace Wire_Spooler
                     bytes[0] = 0x0C;
                     break;
 
+                //Send to PLC after pressing a button
+                case 199:
+                    bytes[0] = 0xC7;
+                    break;
+
                 default:
                     bytes[0] = 0xF0;
                     break;
