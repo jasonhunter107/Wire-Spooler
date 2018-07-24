@@ -27,10 +27,10 @@ namespace Wire_Spooler
         }
 
         //Event handlers for when the tablet receives data from the PLC
-        public event EventHandler<int> WireLengthReceived;
+        public event EventHandler<string> WireLengthReceived;
         public event EventHandler<string> StatusMsgReceived;
         public event EventHandler<string> AlarmMsgReceived;
-        public event EventHandler<int> ServoPosReceived;
+        public event EventHandler<string> ServoPosReceived;
 
         public Task ConnectAsync(string hostname, int port)
         {
@@ -325,14 +325,15 @@ namespace Wire_Spooler
 
             while (!cancellationToken.IsCancellationRequested)
             {
-                var len = await stream.ReadAsync(buffer, 0, 1);
+                var len = await stream.ReadAsync(buffer, 0, 2);
                 commandCode = buffer[0];
+                var payloadLength = buffer[1];
 
                 //Depending on command code, parse the incoming buffer
                 switch (commandCode)
                 {
                     case 0x01:
-                        var length = await stream.ReadAsync(buffer, 0, 80); //may need to add seperate function to make sure its reading 80 bytes
+                        var length = await stream.ReadAsync(buffer, 0, payloadLength); //may need to add seperate function to make sure its reading 80 bytes
                         var statusMsg = Encoding.ASCII.GetString(buffer);
 
                         //Update Status message (80 Bytes long) [0-79]
@@ -341,7 +342,7 @@ namespace Wire_Spooler
 
                     case 0x02:
                         //Update Alarm Message (80 Bytes long) [80-159]
-                        var alarmLength = await stream.ReadAsync(buffer, 0, 80);
+                        var alarmLength = await stream.ReadAsync(buffer, 0, payloadLength);
                         var alarmMsg = Encoding.ASCII.GetString(buffer);
 
                         //Update Status message (80 Bytes long) [0-79]
@@ -349,25 +350,28 @@ namespace Wire_Spooler
                         break;
                     case 0x03:
                         //Update Feed (4 bytes long (real) ) [160-163]
-                        var feedLength = await stream.ReadAsync(buffer, 0, 4);
+                        var feedLength = await stream.ReadAsync(buffer, 0, payloadLength); //was 4
+                        var feedNum = Encoding.ASCII.GetString(buffer);
+                        // var feedNum = BitConverter.ToInt32(buffer, 0);
 
-                        // If the system architecture is little-endian (that is, little end first),
-                        // reverse the byte array.
-                        //if (BitConverter.IsLittleEndian)
-                        //    Array.Reverse(bytes);
-
-                        var feedNum = BitConverter.ToInt32(buffer, 0);
+                        //Set event for when length has been received
+                        WireLengthReceived?.Invoke(this, feedNum);
                         break;
+
                     case 0x04:
-                        //Update servo pos (4 bytes (reak) ) [164-167]
-                        var servoPos = await stream.ReadAsync(buffer, 0, 4);
+                        //Update servo pos (4 bytes (real) ) [164-167]
+                        var servoPos = await stream.ReadAsync(buffer, 0, payloadLength); //was 4
+                        var servoPosNum = Encoding.ASCII.GetString(buffer);
 
                         // If the system architecture is little-endian (that is, little end first),
                         // reverse the byte array.
                         //if (BitConverter.IsLittleEndian)
                         //    Array.Reverse(bytes);
 
-                        var servoPosNum = BitConverter.ToInt32(buffer, 0);
+                        //var servoPosNum = BitConverter.ToInt32(buffer, 0);
+
+                        //Set event for when servo position has been received
+                        ServoPosReceived?.Invoke(this, servoPosNum);
                         break;
 
                     default:

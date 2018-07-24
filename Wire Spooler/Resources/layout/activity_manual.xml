@@ -198,4 +198,25 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toEndOf="@+id/textView11" />
 
+  <TextView
+      android:id="@+id/servoPos"
+      android:layout_width="130dp"
+      android:layout_height="42dp"
+      android:layout_marginStart="51dp"
+      android:text="Servo Pos:"
+      android:textSize="25sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/feed" />
+
+  <TextView
+      android:id="@+id/servoPosTxt"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="4dp"
+      android:layout_marginStart="14dp"
+      android:text="0"
+      android:textSize="25sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/servoPos" />
+
 </android.support.constraint.ConstraintLayout>

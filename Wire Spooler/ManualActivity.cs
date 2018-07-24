@@ -29,8 +29,8 @@ namespace Wire_Spooler
             //Client class
             //TabletClient tab = new TabletClient();
             //10.0.2.2:8081 || 10.205.61.70:10002
-            //await AppState.Instance.tabClient.ConnectAsync("10.205.61.70", 10002);
-            await AppState.Instance.TabClient.ConnectAsync("10.0.2.2", 8081);
+            await AppState.Instance.TabClient.ConnectAsync("10.205.61.70", 10002);
+            //await AppState.Instance.TabClient.ConnectAsync("10.0.2.2", 8081);
 
             //Tell PLC that we are in Manual Mode
             writeCancellationTokenSource = new CancellationTokenSource();
